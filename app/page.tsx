@@ -100,7 +100,7 @@ export default function Home() {
         <div className="section-shell certification-layout">
           <div className="cert-copy"><p className="eyebrow">QUALITY VERIFIED</p><h2>Certifications</h2><p>Finished products are randomly sampled and submitted for independent laboratory testing. Certificates of Analysis provide transparent documentation for every qualified batch.</p><Link href="/coa" className="text-link">VIEW ALL CERTIFICATES <span>→</span></Link></div>
           <div className="coa-cards">
-            {[['Tirzepatide','tirzepatide','/images/COA/Tirze.jpg'],['BPC-157','bpc-157','/images/COA/BPC-157.jpg'],['NAD+','nad-plus','/images/COA/NAD.jpg']].map(([name,slug,src])=><article key={name}><div><Image src={assetPath(src)} alt={name + " certificate of analysis"} fill sizes="25vw" /></div><h3>{name}</h3><Link href={`/coa/${slug}`}>View More</Link></article>)}
+            {[["Tirzepatide 15 mg","tirzepatide-15mg","/images/COA/Tirzepatide 15 mg.jpg"],["BPC-157 10 mg","bpc-157-10mg","/images/COA/BPC-157 10 mg.webp"],["NAD+ 500 mg","nad-plus-500mg","/images/COA/NAD+ 500 mg.jpg"]].map(([name,slug,src])=><article key={name}><div><Image src={assetPath(src)} alt={name + " certificate of analysis"} fill sizes="25vw" /></div><h3>{name}</h3><Link href={`/coa/${slug}`}>View More</Link></article>)}
           </div>
         </div>
       </section>
