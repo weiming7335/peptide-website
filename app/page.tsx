@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
+import { assetPath } from "@/lib/site-config";
 
 const products = [
   ["MOTS-C", "mots-c", "/images/product/MOTS-C.png"],
@@ -55,7 +56,7 @@ export default function Home() {
       </div>
       <header className="site-header">
         <div className="nav-shell">
-          <Link className="brand" href="/" aria-label="Leaxion home"><Image src="/images/logo/logo-leaxionpng.png" alt="Leaxion" width={230} height={92} priority /></Link>
+          <Link className="brand" href="/" aria-label="Leaxion home"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={230} height={92} priority /></Link>
           <nav aria-label="Main navigation">
             <Link className="active" href="/">Home</Link><Link href="/peptide">Peptide</Link><Link href="/coa">COA</Link><Link href="/blog">Blog</Link><Link href="/about">About us</Link><Link href="/contact">Contact US</Link>
           </nav>
@@ -65,7 +66,7 @@ export default function Home() {
       </header>
 
       <section className="hero" id="home">
-        <Image className="hero-image" src="/images/hero-peptide-laboratory.png" alt="Peptide manufacturing laboratory and research vials" fill priority sizes="100vw" />
+        <Image className="hero-image" src={assetPath("/images/hero-peptide-laboratory.png")} alt="Peptide manufacturing laboratory and research vials" fill priority sizes="100vw" />
         <div className="hero-shade" />
         <div className="hero-content section-shell">
           <h1>Reliable, High-Quality<br />Peptides for Research,<br />Pharmaceuticals, and Biotech</h1>
@@ -85,13 +86,13 @@ export default function Home() {
         <div className="section-shell">
           <div className="section-heading"><div><p className="eyebrow">PRODUCT LINE</p><h2>Products Categories</h2></div><Link href="/peptide">MORE PRODUCTS <span>→</span></Link></div>
           <div className="product-grid">
-            {products.map(([name, slug, src]) => <article className="product-card" key={name}><div className="product-image"><Image src={src} alt={`${name} research peptide`} fill sizes="(max-width: 700px) 50vw, 25vw" /></div><div className="product-overlay"><Link href={`/peptide/${slug}`}>View More</Link><h3>{name}</h3></div></article>)}
+            {products.map(([name, slug, src]) => <article className="product-card" key={name}><div className="product-image"><Image src={assetPath(src)} alt={`${name} research peptide`} fill sizes="(max-width: 700px) 50vw, 25vw" /></div><div className="product-overlay"><Link href={`/peptide/${slug}`}>View More</Link><h3>{name}</h3></div></article>)}
           </div>
         </div>
       </section>
 
       <section className="about" id="about">
-        <div className="about-image"><Image src="/images/about-us-1200x800-1-print.png" alt="Leaxion peptide manufacturing facility" fill sizes="50vw" /></div>
+        <div className="about-image"><Image src={assetPath("/images/about-us-1200x800-1-print.png")} alt="Leaxion peptide manufacturing facility" fill sizes="50vw" /></div>
         <div className="about-copy"><p className="eyebrow light">READ MORE</p><h2>About Us</h2><p>With over 7 years of experience in peptide production, Leaxion specializes in research peptides, beauty peptides and custom peptide services.</p><p>We focus on innovation, strict quality control and responsive customer service, supporting custom and bulk requirements with traceable documentation for customers worldwide.</p><Link className="outline-button" href="/about">DISCOVER LEAXION <span>→</span></Link></div>
       </section>
 
@@ -99,7 +100,7 @@ export default function Home() {
         <div className="section-shell certification-layout">
           <div className="cert-copy"><p className="eyebrow">QUALITY VERIFIED</p><h2>Certifications</h2><p>Finished products are randomly sampled and submitted for independent laboratory testing. Certificates of Analysis provide transparent documentation for every qualified batch.</p><Link href="/coa" className="text-link">VIEW ALL CERTIFICATES <span>→</span></Link></div>
           <div className="coa-cards">
-            {[['Tirzepatide','tirzepatide','/images/COA/Tirze.jpg'],['BPC-157','bpc-157','/images/COA/BPC-157.jpg'],['NAD+','nad-plus','/images/COA/NAD.jpg']].map(([name,slug,src])=><article key={name}><div><Image src={src} alt={`${name} certificate of analysis`} fill sizes="25vw" /></div><h3>{name}</h3><Link href={`/coa/${slug}`}>View More</Link></article>)}
+            {[['Tirzepatide','tirzepatide','/images/COA/Tirze.jpg'],['BPC-157','bpc-157','/images/COA/BPC-157.jpg'],['NAD+','nad-plus','/images/COA/NAD.jpg']].map(([name,slug,src])=><article key={name}><div><Image src={assetPath(src)} alt={name + " certificate of analysis"} fill sizes="25vw" /></div><h3>{name}</h3><Link href={`/coa/${slug}`}>View More</Link></article>)}
           </div>
         </div>
       </section>
@@ -109,7 +110,7 @@ export default function Home() {
       <section className="resources section-pad" id="resources">
         <div className="section-shell"><div className="section-heading"><div><p className="eyebrow">OUR RESOURCES</p><h2>News, Trends &amp; Blog</h2></div><Link href="/blog">VIEW ALL ARTICLES <span>→</span></Link></div>
           <div className="blog-grid">
-            {[["Beware of Imposters and Verify Leaxion Official Contacts","verify-peptide-suppliers","/images/blog/verify-peptide-suppliers.png","4 MAR 2026"],["BPC157 Supplier: Why Leaxion Is Your Trusted Partner","bpc157-supplier","/images/blog/bpc157-supplier.png","8 MAR 2026"],["How to Choose a Reliable Peptide Manufacturer for Your Business Needs","choosing-a-peptide-manufacturer","/images/blog/choosing-a-peptide-manufacturer.png","12 MAR 2026"]].map(([title,slug,image,date])=><article key={title}><Link className="blog-image" href={`/blog/${slug}`}><Image src={image} alt={title} fill sizes="(max-width: 640px) 100vw, 33vw" /></Link><div className="blog-body"><span>INSIGHTS · {date}</span><h3>{title}</h3><Link href={`/blog/${slug}`}>Read More <b>→</b></Link></div></article>)}
+            {[["Beware of Imposters and Verify Leaxion Official Contacts","verify-peptide-suppliers","/images/blog/verify-peptide-suppliers.png","4 MAR 2026"],["BPC157 Supplier: Why Leaxion Is Your Trusted Partner","bpc157-supplier","/images/blog/bpc157-supplier.png","8 MAR 2026"],["How to Choose a Reliable Peptide Manufacturer for Your Business Needs","choosing-a-peptide-manufacturer","/images/blog/choosing-a-peptide-manufacturer.png","12 MAR 2026"]].map(([title,slug,image,date])=><article key={title}><Link className="blog-image" href={`/blog/${slug}`}><Image src={assetPath(image)} alt={title} fill sizes="(max-width: 640px) 100vw, 33vw" /></Link><div className="blog-body"><span>INSIGHTS · {date}</span><h3>{title}</h3><Link href={`/blog/${slug}`}>Read More <b>→</b></Link></div></article>)}
           </div>
           <div className="resource-links"><Link href="/blog/beauty-peptide-supplier">Beauty Peptide Supplier: Leaxion Peptide</Link><Link href="/blog/research-peptide-suppliers">Research Peptide Suppliers: Trusted Manufacturing Expertise</Link><Link href="/blog/tb500-peptide-supplier">TB500 Peptide Supplier: Why Leaxion Is Your Ideal Partner</Link></div>
         </div>
@@ -117,7 +118,7 @@ export default function Home() {
 
       <section className="faq section-pad"><div className="section-shell faq-layout"><div><p className="eyebrow">OUR RESOURCES</p><h2>Frequently Asked Questions</h2><p>Find concise answers about our products, documentation, packaging and worldwide service.</p></div><div className="faq-list">{faqs.map(([q,a],i)=><details key={q} open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
-      <footer><div className="section-shell footer-grid"><div className="footer-brand"><Image src="/images/logo/logo-leaxionpng.png" alt="Leaxion" width={220} height={88} /><p>High-Purity Peptides Manufacturer | 7+ Years</p></div><div><h3>Company</h3><Link href="/">Home</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link><Link href="/faq">F.A.Q.</Link></div><div><h3>Products</h3><Link href="/peptide">All Products</Link><Link href="/peptide">Research Peptides</Link><Link href="/coa">Certificates</Link><a href="https://wa.me/85298417612">Custom Peptides</a></div><div><h3>Connect Us</h3><a href="https://wa.me/85298417612" target="_blank" rel="noreferrer">WhatsApp: +852 9841 7612</a><a href="https://wa.me/85298417612" target="_blank" rel="noreferrer">Request a Quote</a><Link href="/privacy-policy">Privacy Policy</Link></div></div><div className="copyright section-shell"><span>© 2026 Leaxion. All Rights Reserved.</span><span>RESEARCH USE ONLY</span></div></footer>
+      <footer><div className="section-shell footer-grid"><div className="footer-brand"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={220} height={88} /><p>High-Purity Peptides Manufacturer | 7+ Years</p></div><div><h3>Company</h3><Link href="/">Home</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link><Link href="/faq">F.A.Q.</Link></div><div><h3>Products</h3><Link href="/peptide">All Products</Link><Link href="/peptide">Research Peptides</Link><Link href="/coa">Certificates</Link><a href="https://wa.me/85298417612">Custom Peptides</a></div><div><h3>Connect Us</h3><a href="https://wa.me/85298417612" target="_blank" rel="noreferrer">WhatsApp: +852 9841 7612</a><a href="https://wa.me/85298417612" target="_blank" rel="noreferrer">Request a Quote</a><Link href="/privacy-policy">Privacy Policy</Link></div></div><div className="copyright section-shell"><span>© 2026 Leaxion. All Rights Reserved.</span><span>RESEARCH USE ONLY</span></div></footer>
       <a className="floating-contact whatsapp" href="https://wa.me/85298417612" target="_blank" rel="noreferrer" aria-label="Contact Leaxion on WhatsApp"><WhatsAppIcon /></a>
     </main>
   );

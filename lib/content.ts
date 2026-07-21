@@ -1,3 +1,5 @@
+import { assetPath } from "@/lib/site-config";
+
 export type Product = { slug: string; name: string; image: string; category: string; summary: string };
 
 export const products: Product[] = [
@@ -8,7 +10,7 @@ export const products: Product[] = [
   ["mt-2", "MT-2", "/images/product/MT-2.png"], ["nad-plus", "NAD+", "/images/product/NAD+.png"],
   ["reta", "Reta", "/images/product/Reta.png"], ["tb500", "TB500", "/images/product/TB500.png"],
   ["tesam", "Tesam", "/images/product/Tesam.png"], ["tirz", "Tirz", "/images/product/Tirz.png"],
-].map(([slug, name, image]) => ({ slug, name, image, category: "Peptide", summary: `${name} is supplied as a high-purity research peptide with batch documentation available for qualified B2B orders.` }));
+].map(([slug, name, image]) => ({ slug, name, image: assetPath(image), category: "Peptide", summary: `${name} is supplied as a high-purity research peptide with batch documentation available for qualified B2B orders.` }));
 
 export type Certificate = { slug: string; name: string; image: string };
 export const certificates: Certificate[] = [
@@ -20,13 +22,13 @@ export const certificates: Certificate[] = [
   ["kpv", "KPV", "/images/COA/KPV.jpg"], ["nad-plus", "NAD+", "/images/COA/NAD.jpg"],
   ["semax", "Semax", "/images/COA/Semax.png"], ["ss31", "SS31", "/images/COA/SS31.jpg"],
   ["tesamorelin", "Tesamorelin", "/images/COA/Tesamorelin.jpg"], ["tirzepatide", "Tirzepatide", "/images/COA/Tirze.jpg"],
-].map(([slug, name, image]) => ({ slug, name, image }));
+].map(([slug, name, image]) => ({ slug, name, image: assetPath(image) }));
 
 export type ArticleSection = { heading: string; paragraphs: string[]; points?: string[] };
 export type Article = { slug: string; title: string; date: string; image: string; summary: string; sections: ArticleSection[] };
 export const articles: Article[] = [
   {
-    slug: "tb500-peptide-supplier", title: "TB500 Peptide Supplier: Why Leaxion Is Your Ideal Choice", date: "24 March 2026", image: "/images/blog/tb500-peptide-supplier.png",
+    slug: "tb500-peptide-supplier", title: "TB500 Peptide Supplier: Why Leaxion Is Your Ideal Choice", date: "24 March 2026", image: assetPath("/images/blog/tb500-peptide-supplier.png"),
     summary: "Selecting a TB500 supplier is a quality and supply-chain decision. Research buyers need clear specifications, batch documentation and reliable communication—not simply a low unit price.",
     sections: [
       { heading: "What Research Buyers Should Expect from a TB500 Supplier", paragraphs: ["A professional supplier should confirm the requested format, quantity, purity target and documentation before an order is accepted. These details help purchasing teams compare offers on the same basis and reduce avoidable delays."] , points: ["A clearly defined product specification", "Batch-linked analytical documentation", "Protective packaging for international transit", "A named contact for order and logistics updates"] },
@@ -37,7 +39,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "research-peptide-suppliers", title: "Research Peptide Suppliers: Leaxion 7-Year Expertise", date: "20 March 2026", image: "/images/blog/research-peptide-suppliers.png",
+    slug: "research-peptide-suppliers", title: "Research Peptide Suppliers: Leaxion 7-Year Expertise", date: "20 March 2026", image: assetPath("/images/blog/research-peptide-suppliers.png"),
     summary: "A dependable research peptide supplier combines manufacturing experience with transparent quality control, flexible supply options and practical support for international buyers.",
     sections: [
       { heading: "About Leaxion—Your Research Peptide Supply Partner", paragraphs: ["Leaxion supports academic laboratories, research organizations, biotechnology teams and professional distributors with catalog, custom and bulk peptide requirements. Seven years of industry experience inform how we plan specifications, documentation and customer communication."], points: ["Catalog and custom peptide supply", "Support for research and bulk quantities", "Batch documentation for qualified products", "Responsive international B2B communication"] },
@@ -48,7 +50,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "beauty-peptide-supplier", title: "Beauty Peptide Supplier: Leaxion Peptide", date: "16 March 2026", image: "/images/blog/beauty-peptide-supplier.png",
+    slug: "beauty-peptide-supplier", title: "Beauty Peptide Supplier: Leaxion Peptide", date: "16 March 2026", image: assetPath("/images/blog/beauty-peptide-supplier.png"),
     summary: "Beauty peptide sourcing requires consistent specifications, traceable batches and close coordination between research, formulation and procurement teams.",
     sections: [
       { heading: "Peptide Supply for Cosmetic Research", paragraphs: ["Beauty and cosmetic research teams work with peptides across screening, formulation development and analytical evaluation. The supplier’s role is to deliver material that matches the agreed specification and is supported by appropriate batch information.", "Leaxion supports catalog and custom peptide inquiries for qualified research and product-development organizations."] },
@@ -59,7 +61,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "choosing-a-peptide-manufacturer", title: "How to Choose a Reliable Peptide Manufacturer for Your Business Needs", date: "12 March 2026", image: "/images/blog/choosing-a-peptide-manufacturer.png",
+    slug: "choosing-a-peptide-manufacturer", title: "How to Choose a Reliable Peptide Manufacturer for Your Business Needs", date: "12 March 2026", image: assetPath("/images/blog/choosing-a-peptide-manufacturer.png"),
     summary: "The right peptide manufacturer should be evaluated through verifiable quality information, realistic production capability, transparent commercial terms and dependable support.",
     sections: [
       { heading: "What Factors Should Businesses Review?", paragraphs: ["Choosing only by quoted price can expose a buyer to inconsistent material, incomplete documents or unreliable delivery. A structured supplier review gives procurement and research teams a clearer basis for comparison."], points: ["Quality-control methods and batch documentation", "Experience with the requested peptide or sequence", "Custom synthesis and scale-up capability", "Communication speed and technical clarity", "Packaging, shipping and after-sales support"] },
@@ -70,7 +72,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "bpc157-supplier", title: "BPC157 Supplier: Why Leaxion Is Your Trusted Partner", date: "8 March 2026", image: "/images/blog/bpc157-supplier.png",
+    slug: "bpc157-supplier", title: "BPC157 Supplier: Why Leaxion Is Your Trusted Partner", date: "8 March 2026", image: assetPath("/images/blog/bpc157-supplier.png"),
     summary: "For professional BPC157 procurement, buyers should prioritize traceable quality information, specification consistency and a supplier that can support repeat research orders.",
     sections: [
       { heading: "Evaluating a BPC157 Supplier", paragraphs: ["A supplier should be able to discuss product format, purity target, quantity, packaging and documentation before providing final commercial terms. Clear answers at this stage are a practical indicator of how the supplier will manage the order."] },
@@ -81,7 +83,7 @@ export const articles: Article[] = [
     ],
   },
   {
-    slug: "verify-peptide-suppliers", title: "Beware of Imposters and Verify Leaxion Official Contacts", date: "4 March 2026", image: "/images/blog/verify-peptide-suppliers.png",
+    slug: "verify-peptide-suppliers", title: "Beware of Imposters and Verify Leaxion Official Contacts", date: "4 March 2026", image: assetPath("/images/blog/verify-peptide-suppliers.png"),
     summary: "Impersonation and unverified sales accounts create real risks for peptide buyers. Confirm the business contact before sharing procurement information or arranging payment.",
     sections: [
       { heading: "Why Contact Verification Matters", paragraphs: ["Unverified social accounts may reuse a company name, logo or product images without authorization. A professional-looking profile alone does not prove that the person represents Leaxion.", "Verification protects your payment, purchasing records and supply chain from avoidable fraud."] },
