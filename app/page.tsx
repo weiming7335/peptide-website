@@ -61,7 +61,7 @@ export default function Home() {
             <Link className="active" href="/">Home</Link><Link href="/peptide">Peptide</Link><Link href="/coa">COA</Link><Link href="/blog">Blog</Link><Link href="/about">About us</Link><Link href="/contact">Contact US</Link>
           </nav>
           <details className="mobile-menu"><summary aria-label="Open navigation">Menu</summary><div><Link href="/">Home</Link><Link href="/peptide">Peptide</Link><Link href="/coa">COA</Link><Link href="/blog">Blog</Link><Link href="/about">About us</Link><Link href="/contact">Contact US</Link><Link href="/faq">F.A.Q.</Link></div></details>
-          <a className="quote-button" href="https://wa.me/85298417612" target="_blank" rel="noreferrer">Quote Now <span>→</span></a>
+          <a className="quote-button" href="https://wa.me/12137038679" target="_blank" rel="noreferrer">Quote Now <span>→</span></a>
         </div>
       </header>
 
@@ -118,8 +118,8 @@ export default function Home() {
 
       <section className="faq section-pad"><div className="section-shell faq-layout"><div><p className="eyebrow">OUR RESOURCES</p><h2>Frequently Asked Questions</h2><p>Find concise answers about our products, documentation, packaging and worldwide service.</p></div><div className="faq-list">{faqs.map(([q,a],i)=><details key={q} open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
-      <footer><div className="section-shell footer-grid"><div className="footer-brand"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={220} height={88} /><p>High-Purity Peptides Manufacturer | 7+ Years</p></div><div><h3>Company</h3><Link href="/">Home</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link><Link href="/faq">F.A.Q.</Link></div><div><h3>Products</h3><Link href="/peptide">All Products</Link><Link href="/peptide">Research Peptides</Link><Link href="/coa">Certificates</Link><a href="https://wa.me/85298417612">Custom Peptides</a></div><div><h3>Connect Us</h3><a href="https://wa.me/85298417612" target="_blank" rel="noreferrer">WhatsApp: +852 9841 7612</a><a href="https://wa.me/85298417612" target="_blank" rel="noreferrer">Request a Quote</a><Link href="/privacy-policy">Privacy Policy</Link></div></div><div className="copyright section-shell"><span>© 2026 Leaxion. All Rights Reserved.</span><span>RESEARCH USE ONLY</span></div></footer>
-      <a className="floating-contact whatsapp" href="https://wa.me/85298417612" target="_blank" rel="noreferrer" aria-label="Contact Leaxion on WhatsApp"><WhatsAppIcon /></a>
+      <footer><div className="section-shell footer-grid"><div className="footer-brand"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={220} height={88} /><p>High-Purity Peptides Manufacturer | 7+ Years</p></div><div><h3>Company</h3><Link href="/">Home</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link><Link href="/faq">F.A.Q.</Link></div><div><h3>Products</h3><Link href="/peptide">All Products</Link><Link href="/peptide">Research Peptides</Link><Link href="/coa">Certificates</Link><a href="https://wa.me/12137038679">Custom Peptides</a></div><div><h3>Connect Us</h3><a href="https://wa.me/12137038679" target="_blank" rel="noreferrer">WhatsApp: +1 213 703 8679</a><a href="https://wa.me/12137038679" target="_blank" rel="noreferrer">Request a Quote</a><Link href="/privacy-policy">Privacy Policy</Link></div></div><div className="copyright section-shell"><span>© 2026 Leaxion. All Rights Reserved.</span><span>RESEARCH USE ONLY</span></div></footer>
+      <a className="floating-contact whatsapp" href="https://wa.me/12137038679" target="_blank" rel="noreferrer" aria-label="Contact Leaxion on WhatsApp"><WhatsAppIcon /></a>
     </main>
   );
 }

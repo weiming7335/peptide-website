@@ -108,11 +108,11 @@ export const articles: Article[] = [
     sections: [
       { heading: "Why Contact Verification Matters", paragraphs: ["Unverified social accounts may reuse a company name, logo or product images without authorization. A professional-looking profile alone does not prove that the person represents Leaxion.", "Verification protects your payment, purchasing records and supply chain from avoidable fraud."] },
       { heading: "Warning Signs to Watch For", paragraphs: ["Pause the conversation when an account uses urgency, refuses to provide consistent company information or changes payment instructions without explanation."], points: ["A newly created or incomplete social profile", "Pricing far below a documented quotation", "Requests to pay an unrelated individual", "Refusal to provide product or batch documentation", "Conflicting phone numbers or business identities"] },
-      { heading: "How to Verify a Leaxion Contact", paragraphs: ["Use the WhatsApp link published on this website: +852 9841 7612. Send the name and contact details of the person you are checking, and wait for confirmation before proceeding.", "Do not rely on contact details sent only through a third-party social platform. Return to the official website and start a new conversation through the displayed WhatsApp button."] },
+      { heading: "How to Verify a Leaxion Contact", paragraphs: ["Use the primary WhatsApp link published on this website: +1 213 703 8679. Send the name and contact details of the person you are checking, and wait for confirmation before proceeding.", "Do not rely on contact details sent only through a third-party social platform. Return to the official website and start a new conversation through the displayed WhatsApp button."] },
       { heading: "What to Do If You Find an Imposter", paragraphs: ["Do not send payment or confidential purchasing information. Save screenshots, record the profile URL, report the account to the platform and notify Leaxion through the official WhatsApp number."] },
       { heading: "A Final Procurement Check", paragraphs: ["Before confirming an order, make sure the supplier identity, quotation, product specification, payment recipient and delivery details are consistent. If any item changes unexpectedly, stop and verify again."] },
     ],
   },
 ];
 
-export const whatsappUrl = "https://wa.me/85298417612";
+export const whatsappUrl = "https://wa.me/12137038679";
