@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { WhatsAppIcon } from "@/components/whatsapp-icon";
-import { assetPath } from "@/lib/site-config";
+import { assetPath, companyName } from "@/lib/site-config";
 
 const products = [
   ["MOTS-C", "mots-c", "/images/product/MOTS-C.png"],
@@ -118,7 +118,7 @@ export default function Home() {
 
       <section className="faq section-pad"><div className="section-shell faq-layout"><div><p className="eyebrow">OUR RESOURCES</p><h2>Frequently Asked Questions</h2><p>Find concise answers about our products, documentation, packaging and worldwide service.</p></div><div className="faq-list">{faqs.map(([q,a],i)=><details key={q} open={i===0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section>
 
-      <footer><div className="section-shell footer-grid"><div className="footer-brand"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={220} height={88} /><p>High-Purity Peptides Manufacturer | 7+ Years</p></div><div><h3>Company</h3><Link href="/">Home</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link><Link href="/faq">F.A.Q.</Link></div><div><h3>Products</h3><Link href="/peptide">All Products</Link><Link href="/peptide">Research Peptides</Link><Link href="/coa">Certificates</Link><a href="https://wa.me/12137038679">Custom Peptides</a></div><div><h3>Connect Us</h3><a href="https://wa.me/12137038679" target="_blank" rel="noreferrer">WhatsApp: +1 213 703 8679</a><a href="https://wa.me/12137038679" target="_blank" rel="noreferrer">Request a Quote</a><Link href="/privacy-policy">Privacy Policy</Link></div></div><div className="copyright section-shell"><span>© 2026 Leaxion. All Rights Reserved.</span><span>RESEARCH USE ONLY</span></div></footer>
+      <footer><div className="section-shell footer-grid"><div className="footer-brand"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={220} height={88} /><p>High-Purity Peptides Manufacturer | 7+ Years</p></div><div><h3>Company</h3><Link href="/">Home</Link><Link href="/about">About Us</Link><Link href="/contact">Contact Us</Link><Link href="/faq">F.A.Q.</Link></div><div><h3>Products</h3><Link href="/peptide">All Products</Link><Link href="/peptide">Research Peptides</Link><Link href="/coa">Certificates</Link><a href="https://wa.me/12137038679">Custom Peptides</a></div><div><h3>Connect Us</h3><a href="https://wa.me/12137038679" target="_blank" rel="noreferrer">WhatsApp: +1 213 703 8679</a><a href="https://wa.me/12137038679" target="_blank" rel="noreferrer">Request a Quote</a><Link href="/privacy-policy">Privacy Policy</Link></div></div><div className="copyright section-shell"><span>© 2026 {companyName}. All Rights Reserved.</span><span>RESEARCH USE ONLY</span></div></footer>
       <a className="floating-contact whatsapp" href="https://wa.me/12137038679" target="_blank" rel="noreferrer" aria-label="Contact Leaxion on WhatsApp"><WhatsAppIcon /></a>
     </main>
   );
