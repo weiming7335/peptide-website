@@ -11,11 +11,13 @@ export default function Home() {
     <section className="hero">
       <Image className="hero-image hero-market-image" src={assetPath("/images/jike/hero-global-market.jpg")} alt="Jike Peptide global research product supply" fill priority sizes="100vw" />
       <div className="section-shell hero-content">
-        <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
-        <h1>Research peptide supply, backed by verifiable data.</h1>
-        <p>One-kit ordering, batch-linked third-party testing, worldwide delivery and custom packaging support for research customers.</p>
-        <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Ask Christine for price</a><Link className="secondary-button" href="/coa">Verify COA</Link></div>
-        <div className="hero-proof"><span><b>1 kit</b>Minimum order</span><span><b>10 vials</b>Per kit</span><span><b>34 reports</b>Linked verification</span></div>
+        <div className="hero-copy">
+          <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
+          <h1>Research peptide supply, backed by verifiable data.</h1>
+          <p>One-kit ordering, batch-linked third-party testing, worldwide delivery and custom packaging support for research customers.</p>
+          <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Ask Christine for price</a><Link className="secondary-button" href="/coa">Verify COA</Link></div>
+          <div className="hero-proof"><span><b>1 kit</b>Minimum order</span><span><b>10 vials</b>Per kit</span><span><b>34 reports</b>Linked verification</span></div>
+        </div>
       </div>
     </section>
 
