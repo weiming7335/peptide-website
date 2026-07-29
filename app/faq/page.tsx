@@ -1,20 +1,18 @@
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { christineWhatsapp } from "@/lib/content";
 
-const questions = [
-  ["What types of peptides do you manufacture?", "We specialize in custom peptides, research-grade peptides, cosmetic peptides, lyophilized powders and raw materials for pharmaceutical research applications."],
-  ["What is the typical purity of your peptides?", "Our peptides are typically ≥99% pure, with detailed Certificates of Analysis available for qualified batches."],
-  ["Why do your products say “Research Use Only”?", "Products are supplied exclusively for laboratory research and analytical use. They are not intended for human consumption, diagnosis or treatment."],
-  ["What if I need technical support after purchasing?", "Our technical and sales support team can answer questions before or after purchase through WhatsApp."],
-  ["How do you reconstitute powdered peptides?", "Our products are supplied for qualified laboratory research only. Follow your institution’s validated protocol and applicable safety requirements."],
-  ["How is the product packaged to ensure stability?", "Peptides are lyophilized and sealed in vials, with protective packaging selected according to the destination and climate."],
-  ["Do you ship internationally?", "Yes. We support delivery to more than 35 countries and provide shipment tracking."],
-  ["Where are you shipping from?", "International parcels are consolidated through our export logistics network before worldwide delivery."],
-  ["What payment methods do you accept?", "Available secure payment methods are confirmed by our sales specialist during quotation."],
-  ["How long does it take to process and ship my order?", "Standard and custom lead times depend on product availability, quantity and specification. The schedule is confirmed before ordering."],
+const faqs=[
+  ["What is the minimum order?","The standard minimum order is one kit. Each standard kit contains 10 vials. Individual vials are not sold."],
+  ["Are prices shown on the website?","No. Current retail, wholesale and custom prices are provided directly by Christine because specifications, quantities and delivery requirements vary."],
+  ["Can I review a COA before ordering?","Yes. Public third-party links are available in our COA center. Contact us to confirm the documentation for the current batch."],
+  ["How long does U.S. delivery take?","USPS normally takes 10–15 business days after dispatch and costs $50. FedEx normally takes 4–7 business days after dispatch and costs $80. Carrier transit times may vary."],
+  ["Do you offer free shipping?","Orders of $500 or more include complimentary USPS shipping. FedEx is available for an additional $30 on qualifying orders."],
+  ["Do you ship internationally?","Yes. We support worldwide delivery. Available routes and timing are confirmed for the destination during quotation."],
+  ["Which payment methods are accepted?","Wire T/T, PayPal with a 5% transaction fee, Zelle, USDC, USDT-TRC20 and USDT-ERC20. Payment instructions are shared only through verified business contacts."],
+  ["Can you provide custom labels and packaging?","Yes. Custom label and packaging projects normally require 1–2 weeks. MOQ depends on the product and packaging requirements."],
+  ["Are these products intended for human consumption?","No. All catalog products are supplied strictly for laboratory research and analytical use and are not for human consumption."],
+  ["How do I verify an official contact?","Use the Christine WhatsApp button or email address published on this website. Do not make payment to contact details received only through an unverified third-party account."],
 ];
-
-export default function FaqPage() {
-  return <><SiteHeader /><main><PageHero title="FAQ" /><section className="faq-page section-pad"><div className="section-shell"><div><p className="eyebrow">OUR RESOURCES</p><h2>Frequently Asked Questions</h2><p>Answers about products, documentation, packaging and global service.</p></div><div className="faq-list">{questions.map(([q, a], i) => <details key={q} open={i === 0}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section></main><SiteFooter /></>;
-}
+export default function FaqPage(){return <><SiteHeader/><main><PageHero title="Frequently asked questions"/><section className="section-pad"><div className="section-shell faq-layout"><div><p className="eyebrow">HELP CENTER</p><h2>Clear answers before you order.</h2><p>Need a product-specific answer? Contact Christine directly.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Ask on WhatsApp</a></div><div className="faq-list">{faqs.map(([q,a])=><details key={q}><summary>{q}<span>+</span></summary><p>{a}</p></details>)}</div></div></section></main><SiteFooter/></>;}

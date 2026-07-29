@@ -1,27 +1,27 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { whatsappUrl } from "@/lib/content";
-import { assetPath, basePath } from "@/lib/site-config";
+import { assetPath } from "@/lib/site-config";
+import { christineWhatsapp } from "@/lib/content";
 
 export function SiteHeader() {
-  const pathname = usePathname();
-  const navigation = [
-    ["Home", "/"], ["Peptide", "/peptide"], ["COA", "/coa"],
-    ["Blog", "/blog"], ["About us", "/about"], ["Contact US", "/contact"],
-  ];
-  const routePath = pathname.startsWith(basePath) ? pathname.slice(basePath.length) || "/" : pathname;
-  const isActive = (href: string) => href === "/" ? routePath === "/" : routePath.startsWith(href);
-
   return <>
-    <div className="announcement"><span>What Is Peptide Purity and Why Does It Matter in Research-Grade Peptides?</span><span>How to Verify Leaxion Official Business Contacts</span></div>
-    <header className="site-header"><div className="nav-shell">
-      <Link className="brand" href="/"><Image src={assetPath("/images/logo/logo-leaxionpng.png")} alt="Leaxion" width={230} height={92} priority /></Link>
-      <nav aria-label="Main navigation">{navigation.map(([label, href]) => <Link className={isActive(href) ? "active" : undefined} href={href} key={href}>{label}</Link>)}</nav>
-      <details className="mobile-menu"><summary aria-label="Open navigation">Menu</summary><div>{navigation.map(([label, href]) => <Link className={isActive(href) ? "active" : undefined} href={href} key={href}>{label}</Link>)}<Link className={isActive("/faq") ? "active" : undefined} href="/faq">F.A.Q.</Link></div></details>
-      <a className="quote-button" href={whatsappUrl} target="_blank" rel="noreferrer">Quote Now <span>→</span></a>
-    </div></header>
+    <div className="research-bar">FOR RESEARCH USE ONLY · NOT FOR HUMAN CONSUMPTION</div>
+    <header className="site-header">
+      <div className="section-shell nav-shell">
+        <Link className="brand" href="/" aria-label="Jike Peptide home">
+          <Image src={assetPath("/images/jike/logo-blue-jp.jpg")} alt="JP" width={58} height={58} priority />
+          <span><strong>Jike Peptide</strong><small>INTERNATIONAL RESEARCH SUPPLY</small></span>
+        </Link>
+        <nav>
+          <Link href="/peptide">Products</Link>
+          <Link href="/coa">COA Verification</Link>
+          <Link href="/about">Company</Link>
+          <Link href="/faq">FAQ</Link>
+          <Link href="/contact">Contact</Link>
+        </nav>
+        <details className="mobile-menu"><summary>Menu</summary><div><Link href="/peptide">Products</Link><Link href="/coa">COA</Link><Link href="/about">Company</Link><Link href="/faq">FAQ</Link><Link href="/contact">Contact</Link></div></details>
+        <a className="header-cta" href={christineWhatsapp} target="_blank" rel="noreferrer">Get current price</a>
+      </div>
+    </header>
   </>;
 }

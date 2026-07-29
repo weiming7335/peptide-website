@@ -1,118 +1,132 @@
 import { assetPath } from "@/lib/site-config";
 
-export type Product = { slug: string; name: string; image: string; category: string; summary: string };
+export const christineWhatsapp = "https://wa.me/12137038679";
+export const lunaWhatsapp = "https://wa.me/85298417612";
+export const whatsappUrl = christineWhatsapp;
+export const whatsappChannel = "https://whatsapp.com/channel/0029Vb8k5HeJP20vWiJ2Sk1E";
+export const email = "christinepeptide@gmail.com";
+
+export type Product = {
+  name: string;
+  slug: string;
+  category: string;
+  codes: string[];
+  specs: string[];
+  featured?: boolean;
+};
+
+const product = (
+  name: string,
+  slug: string,
+  codes: string[],
+  specs: string[],
+  category = "Research Peptides",
+  featured = false,
+): Product => ({ name, slug, category, codes, specs, featured });
 
 export const products: Product[] = [
-  ["aod9604", "AOD9604", "/images/product/AOD9604.png"], ["bpc157", "BPC157", "/images/product/BPC157.png"],
-  ["bpc157-tb500", "BPC157+TB500", "/images/product/BPC157+TB500.png"], ["cagrilin", "Cagrilin", "/images/product/Cagrilin.png"],
-  ["epithalon", "Epithalon", "/images/product/Epithalon.png"], ["glow", "GLOW", "/images/product/GLOW.png"],
-  ["klow", "KLOW", "/images/product/KLOW.png"], ["mots-c", "MOTS-C", "/images/product/MOTS-C.png"],
-  ["mt-2", "MT-2", "/images/product/MT-2.png"], ["nad-plus", "NAD+", "/images/product/NAD+.png"],
-  ["reta", "Reta", "/images/product/Reta.png"], ["tb500", "TB500", "/images/product/TB500.png"],
-  ["tesam", "Tesam", "/images/product/Tesam.png"], ["tirz", "Tirz", "/images/product/Tirz.png"],
-].map(([slug, name, image]) => ({ slug, name, image: assetPath(image), category: "Peptide", summary: `${name} is supplied as a high-purity research peptide with batch documentation available for qualified B2B orders.` }));
+  product("Retatrutide", "retatrutide", ["RT5","RT10","RT15","RT20","RT30","RT60"], ["5mg","10mg","15mg","20mg","30mg","60mg"], "Metabolic Research", true),
+  product("Tirzepatide", "tirzepatide", ["TR10","TR15","TR20","TR30","TR40","TR60"], ["10mg","15mg","20mg","30mg","40mg","60mg"], "Metabolic Research", true),
+  product("Acetic Acid", "acetic-acid", ["AA5","AA10"], ["5mg","10mg"], "Research Supplies"),
+  product("Adamax", "adamax", ["ADA5","ADA10"], ["5mg","10mg"]),
+  product("AICAR", "aicar", ["AR100"], ["100mg"]),
+  product("ARA-290 (Cibinetide)", "ara-290", ["RA10"], ["10mg"]),
+  product("AOD9604", "aod9604", ["5AD","10AD"], ["5mg","10mg"]),
+  product("AHK-CU", "ahk-cu", ["AU50"], ["50mg"], "Cosmetic Research"),
+  product("5-Amino-1MQ", "5-amino-1mq", ["50AM","10AM"], ["50mg","10mg"]),
+  product("BPC-157", "bpc-157", ["BC5","BC10"], ["5mg","10mg"], "Recovery Research", true),
+  product("BPC-157 + TB-500", "bpc-157-tb-500", ["BB10","BB20","BB30"], ["5mg + 5mg","10mg + 10mg","15mg + 15mg"], "Recovery Research", true),
+  product("Sterile Water", "sterile-water", ["WA3","WA10"], ["3ml","10ml"], "Research Supplies"),
+  product("Cagrilintide", "cagrilintide", ["CGL5","CGL10"], ["5mg","10mg"], "Metabolic Research"),
+  product("CJC-1295 With DAC", "cjc-1295-with-dac", ["CD5","CD10"], ["5mg","10mg"]),
+  product("CJC-1295 Without DAC", "cjc-1295-without-dac", ["CND5","CND10"], ["5mg","10mg"]),
+  product("CJC-1295 Without DAC + Ipamorelin", "cjc-1295-ipamorelin", ["CP10","CP20"], ["5mg + 5mg","10mg + 10mg"]),
+  product("Cartalax", "cartalax", ["CART20"], ["20mg"]),
+  product("Cerebrolysin", "cerebrolysin", ["CBL60"], ["60mg"]),
+  product("DSIP", "dsip", ["DS5","DS10"], ["5mg","10mg"]),
+  product("Epithalon", "epithalon", ["ET10","ET50"], ["10mg","50mg"]),
+  product("GHK-CU", "ghk-cu", ["CU50","CU100"], ["50mg","100mg"], "Cosmetic Research", true),
+  product("Glutathione", "glutathione", ["GTT1500","GTT600"], ["1500mg","600mg"], "Cosmetic Research"),
+  product("GLOW", "glow", ["BBG70"], ["BPC-157 10mg + GHK-CU 50mg + TB-500 10mg"], "Blends", true),
+  product("HCG", "hcg", ["G2K","G5K","G10K"], ["2,000 IU","5,000 IU","10,000 IU"]),
+  product("Ipamorelin", "ipamorelin", ["IP5","IP10"], ["5mg","10mg"]),
+  product("IGF-1 LR3", "igf-1-lr3", ["IG1"], ["1mg"]),
+  product("KLOW", "klow", ["KL80"], ["KPV 10mg + BPC-157 10mg + GHK-CU 50mg + TB-500 10mg"], "Blends", true),
+  product("KPV", "kpv", ["KP5","KP10"], ["5mg","10mg"]),
+  product("Kisspeptin", "kisspeptin", ["KS5","KS10"], ["5mg","10mg"]),
+  product("Lemon Bottle", "lemon-bottle", ["LB10"], ["10mg"], "Cosmetic Research"),
+  product("MOTS-C", "mots-c", ["MS10","MS20","MS40"], ["10mg","20mg","40mg"], "Metabolic Research", true),
+  product("Melanotan I", "melanotan-i", ["MT1"], ["10mg"]),
+  product("Melanotan II", "melanotan-ii", ["ML10"], ["10mg"]),
+  product("NAD+", "nad-plus", ["NJ500","NJ1000"], ["500mg","1000mg"], "Metabolic Research", true),
+  product("Oxytocin Acetate", "oxytocin-acetate", ["OT5","OT10"], ["5mg","10mg"]),
+  product("PE-22-28", "pe-22-28", ["PE5","PE10"], ["5mg","10mg"]),
+  product("PT-141", "pt-141", ["P41"], ["10mg"]),
+  product("Pinealon", "pinealon", ["PI10"], ["10mg"]),
+  product("Sermorelin", "sermorelin", ["SMO5","SMO10"], ["5mg","10mg"]),
+  product("Selank", "selank", ["SK5","SK10"], ["5mg","10mg"]),
+  product("Semax", "semax", ["XA5","XA10"], ["5mg","10mg"]),
+  product("SS-31", "ss-31", ["2S10","2S50"], ["10mg","50mg"]),
+  product("Thymosin Alpha-1", "thymosin-alpha-1", ["TA5","TA10"], ["5mg","10mg"]),
+  product("TB-500 (Thymosin B4 Acetate)", "tb-500", ["BT5","BT10"], ["5mg","10mg"], "Recovery Research", true),
+  product("Tesamorelin", "tesamorelin", ["TSM5","TSM10","TSM20"], ["5mg","10mg","20mg"]),
+  product("Thymalin / Thymulin", "thymalin-thymulin", ["TY10"], ["10mg"]),
+  product("BAC Water", "bac-water", ["BA3","BA10"], ["3ml","10ml"], "Research Supplies"),
+];
 
-export type Certificate = { slug: string; name: string; image: string };
+export const featuredProducts = products.filter((item) => item.featured);
+
+export type Certificate = {
+  slug: string;
+  name: string;
+  testType: "Mass / Purity" | "Endotoxin";
+  reportUrl: string;
+};
+
+const coa = (code: string, name: string, mass: string, endotoxin: string): Certificate[] => [
+  { slug: `${code.toLowerCase()}-mass-purity`, name, testType: "Mass / Purity", reportUrl: mass },
+  { slug: `${code.toLowerCase()}-endotoxin`, name, testType: "Endotoxin", reportUrl: endotoxin },
+];
+
 export const certificates: Certificate[] = [
-  ["ahk-cu-100mg", "AHK-Cu 100 mg", "/images/COA/AHK-Cu-100mg.jpg"],
-  ["aod-9604-5mg", "AOD-9604 5 mg", "/images/COA/AOD-9604 5 mg.jpg"],
-  ["bpc-157-10mg", "BPC-157 10 mg", "/images/COA/BPC-157 10 mg.webp"],
-  ["bpc-157-5mg", "BPC-157 5 mg", "/images/COA/BPC-157-5mg.jpg"],
-  ["bpc-tb-10mg", "BPC-157 + TB-500 10 mg", "/images/COA/BPCTB-10mg.jpg"],
-  ["cjc-ipa-10mg", "CJC-1295 + Ipamorelin 10 mg", "/images/COA/CJC-IPA-10mg-1.jpg"],
-  ["ghk-cu-50mg", "GHK-Cu 50 mg", "/images/COA/GHK-Cu-50mg.jpg"],
-  ["hcg-10000iu", "HCG 10,000 IU", "/images/COA/HCG 10,000 IU.webp"],
-  ["hcg-5000iu", "HCG 5,000 IU", "/images/COA/HCG 5000 IU.webp"],
-  ["ipamorelin-10mg", "Ipamorelin 10 mg", "/images/COA/Ipamorelin-10mg.jpg"],
-  ["klow-80mg", "KLOW 80 mg", "/images/COA/KLOW 80 mg.jpg"],
-  ["mots-c-10mg", "MOTS-C 10 mg", "/images/COA/MOTS-C 10 mg.jpg"],
-  ["nad-plus-500mg", "NAD+ 500 mg", "/images/COA/NAD+ 500 mg.jpg"],
-  ["pt-141-10mg", "PT-141 10 mg", "/images/COA/PT-141 10 mg.jpg"],
-  ["retatrutide-15mg", "Retatrutide 15 mg", "/images/COA/Retatrutide 15 mg.webp"],
-  ["retatrutide-5mg", "Retatrutide 5 mg", "/images/COA/Retatrutide 5 mg.jpg"],
-  ["retatrutide-10mg", "Retatrutide 10 mg", "/images/COA/Retatrutide-10mg.jpg"],
-  ["ss-31-10mg", "SS-31 10 mg", "/images/COA/SS-31 10 mg.jpg"],
-  ["selank-10mg", "Selank 10 mg", "/images/COA/Selank-10mg.jpg"],
-  ["semaglutide-5mg", "Semaglutide 5 mg", "/images/COA/Semaglutide 5 mg.jpg"],
-  ["semax-10mg", "Semax 10 mg", "/images/COA/Semax 10 mg.webp"],
-  ["sermorelin-5mg", "Sermorelin 5 mg", "/images/COA/Sermorelin 5 mg.webp"],
-  ["tb-500-10mg", "TB-500 10 mg", "/images/COA/TB-500-10mg.webp"],
-  ["tesamorelin-10mg", "Tesamorelin 10 mg", "/images/COA/Tesamorelin 10 mg.jpg"],
-  ["thymosin-alpha-1-5mg", "Thymosin Alpha-1 5 mg", "/images/COA/Thymosin Alpha-1 5 mg.webp"],
-  ["tirzepatide-15mg", "Tirzepatide 15 mg", "/images/COA/Tirzepatide 15 mg.jpg"],
-  ["tirzepatide-30mg", "Tirzepatide 30 mg", "/images/COA/Tirzepatide 30 mg.jpg"],
-  ["tirzepatide-10mg", "Tirzepatide 10 mg", "/images/COA/Tirzepatide-10mg.webp"],
-].map(([slug, name, image]) => ({ slug, name, image: assetPath(image) }));
+  ...coa("KLOW80","KLOW 80mg","https://janoshik.com/tests/200491-KLOW80_BBI8X5D2EKTF","https://janoshik.com/tests/200492-KLOW80_KB9ZV6RAM99W"),
+  ...coa("GHKCU50","GHK-CU 50mg","https://janoshik.com/tests/198338-GHKCU50_7YWYHRHCLAXS","https://janoshik.com/tests/198339-GHKCU50_K6K7811N1YSS"),
+  ...coa("RT40","Retatrutide 40mg","https://janoshik.com/tests/198332-RT40_YGMARYXXBXBM","https://janoshik.com/tests/198333-RT40_LDFD7QFWQ3IW"),
+  ...coa("RT50","Retatrutide 50mg","https://janoshik.com/tests/198334-RT50_E8YFEAFDQP22","https://janoshik.com/tests/198335-RT50_IX65LB1KY1D5"),
+  ...coa("MOTS40","MOTS-C 40mg","https://janoshik.com/tests/157419-MOTS40_VXJWRYZWM3X2","https://janoshik.com/tests/157420-MOTS40_3SCM7SMJKGRV"),
+  ...coa("KPV10","KPV 10mg","https://janoshik.com/tests/153791-KPV_U16HY2YMVBQ1","https://janoshik.com/tests/153792-KPV_QVTWP4Z4NTJD"),
+  ...coa("TR40","Tirzepatide 40mg","https://janoshik.com/tests/153775-TR40_676BFIDUUUP5","https://janoshik.com/tests/153776-TR40_3IG4PA29V77W"),
+  ...coa("TESA10","Tesamorelin 10mg","https://janoshik.com/tests/153787-TESA10_FZ52MTSTUB5J","https://janoshik.com/tests/153788-TESA10_1HDFDF14VSD9"),
+  ...coa("RT60","Retatrutide 60mg","https://janoshik.com/tests/157417-RT60_CEQN8FBULFA8","https://janoshik.com/tests/157418-RT60_JRSEEKRTW5YQ"),
+  ...coa("RT10","Retatrutide 10mg","https://janoshik.com/tests/153777-RT10_SLSRXACR5NPX","https://janoshik.com/tests/153778-RT10_FADVC951A41G"),
+  ...coa("RT20","Retatrutide 20mg","https://janoshik.com/tests/153779-RT20_ZKQI2GMY58BN","https://janoshik.com/tests/153780-RT20_9PYASMXM4W1Z"),
+  ...coa("RT30","Retatrutide 30mg","https://janoshik.com/tests/153773-RT30_N8HHH7B6T3HF","https://janoshik.com/tests/153774-RT30_3W86I4F9SEMI"),
+  ...coa("TB10","TB-500 10mg","https://janoshik.com/tests/153781-TB10_8NIF6UBJAWQI","https://janoshik.com/tests/153782-TB10_EWZDCYLY9RD7"),
+  ...coa("NAD1000","NAD+ 1000mg","https://janoshik.com/tests/157421-NAD1000_46VA2MEPI29X","https://janoshik.com/tests/148325-NAD1000_4DJ4PAB9NEXP"),
+  ...coa("TR30T","Tirzepatide 30mg","https://janoshik.com/tests/153769-TR30_YG384LUX2484","https://janoshik.com/tests/153770-TR30_DQW81C1NHESG"),
+  ...coa("TR10T","Tirzepatide 10mg","https://janoshik.com/tests/153771-TR10_C7KQKE2DWNEL","https://janoshik.com/tests/153772-TR10_V64SECCS79JL"),
+  ...coa("IPA10","Ipamorelin 10mg","https://janoshik.com/tests/153789-IPA10_DFCD14XCWEW4","https://janoshik.com/tests/153790-IPA10_NDVT4YUR4L44"),
+];
 
-export type ArticleSection = { heading: string; paragraphs: string[]; points?: string[] };
-export type Article = { slug: string; title: string; date: string; image: string; summary: string; sections: ArticleSection[] };
-export const articles: Article[] = [
+export const testimonials = [
+  { name: "aebowman", quote: "Ordered July 15, delivered July 21! Thanks for the great service.", note: "Customer review" },
+  { name: "DG", quote: "Ordered on July 16 and delivered on July 22. Huge thank you to Christine!", note: "Customer review" },
+  { name: "Shellica", quote: "Ordered July 7 from China and arrived July 27 in Alberta, Canada. Thanks, Christine!", note: "Alberta, Canada" },
+  { name: "DeeT🐢", quote: "Thank you for your patience. I was wishy-washy about this order, but here it is!", note: "Customer review" },
+  { name: "ZVRII", quote: "Order was placed July 19, I received my tracking number July 20, and delivery from China was completed July 27.", note: "Customer review" },
+  { name: "yeahnooo", quote: "Thank you, JP! I received Reta and KLOW after ordering on July 19, with delivery on July 27. Everything arrived great!", note: "Customer review" },
+];
+
+export const articles = [
   {
-    slug: "tb500-peptide-supplier", title: "TB500 Peptide Supplier: Why Leaxion Is Your Ideal Choice", date: "24 March 2026", image: assetPath("/images/blog/tb500-peptide-supplier.png"),
-    summary: "Selecting a TB500 supplier is a quality and supply-chain decision. Research buyers need clear specifications, batch documentation and reliable communication—not simply a low unit price.",
+    slug: "how-to-verify-a-peptide-coa",
+    title: "How to Verify a Peptide COA",
+    date: "30 July 2026",
+    image: assetPath("/images/jike/hero-lab.jpg"),
+    summary: "A practical checklist for reviewing batch-linked third-party analytical reports.",
     sections: [
-      { heading: "What Research Buyers Should Expect from a TB500 Supplier", paragraphs: ["A professional supplier should confirm the requested format, quantity, purity target and documentation before an order is accepted. These details help purchasing teams compare offers on the same basis and reduce avoidable delays."] , points: ["A clearly defined product specification", "Batch-linked analytical documentation", "Protective packaging for international transit", "A named contact for order and logistics updates"] },
-      { heading: "Purity, Identity and Batch Documentation", paragraphs: ["Purity alone does not describe the complete quality profile of a research peptide. Buyers should ask how identity is assessed, whether the documentation relates to the supplied lot, and how samples are handled throughout analysis.", "Leaxion makes available Certificates of Analysis for qualified batches so research partners can review relevant information before repeat procurement."] },
-      { heading: "From Trial Quantities to Repeat Supply", paragraphs: ["Research programs may begin with a small evaluation order and later require consistent repeat quantities. A suitable supplier should discuss scalability early, including expected lead times, packaging units and documentation needs at each stage."] },
-      { heading: "International B2B Support", paragraphs: ["Cross-border procurement requires more than dispatching a parcel. Responsive communication, clear shipping records and prompt tracking updates help laboratories and distributors plan receiving and inventory activities."], points: ["Worldwide tracked shipping", "Custom and bulk quotation support", "PayPal, USDT, USDC, Wise and T/T options", "WhatsApp communication with the sales team"] },
-      { heading: "TB500 Is for Research Use Only", paragraphs: ["Leaxion supplies TB500 strictly for laboratory research and analytical use. It is not intended for human consumption, diagnosis or treatment. Buyers are responsible for following local rules and their institution’s approved research procedures."] },
-    ],
-  },
-  {
-    slug: "research-peptide-suppliers", title: "Research Peptide Suppliers: Leaxion 7-Year Expertise", date: "20 March 2026", image: assetPath("/images/blog/research-peptide-suppliers.png"),
-    summary: "A dependable research peptide supplier combines manufacturing experience with transparent quality control, flexible supply options and practical support for international buyers.",
-    sections: [
-      { heading: "About Leaxion—Your Research Peptide Supply Partner", paragraphs: ["Leaxion supports academic laboratories, research organizations, biotechnology teams and professional distributors with catalog, custom and bulk peptide requirements. Seven years of industry experience inform how we plan specifications, documentation and customer communication."], points: ["Catalog and custom peptide supply", "Support for research and bulk quantities", "Batch documentation for qualified products", "Responsive international B2B communication"] },
-      { heading: "Why Purity Matters in Research", paragraphs: ["Impurities can complicate analytical interpretation, affect repeatability and introduce uncertainty into downstream work. For this reason, buyers should establish the required purity level before requesting a quotation rather than relying on an undefined ‘high-purity’ claim.", "A Certificate of Analysis should be reviewed together with the product specification and batch identity. Research teams may also request additional documentation based on their internal quality procedures."] },
-      { heading: "Catalog and Custom Peptide Services", paragraphs: ["Catalog products are useful when teams need established specifications and faster procurement. Custom projects require additional review of sequence, modification, scale, purity and analytical expectations. Providing these requirements at the inquiry stage allows the manufacturer to evaluate feasibility accurately."] },
-      { heading: "How to Compare Research Peptide Suppliers", paragraphs: ["Price is only one component of total procurement cost. Rework, unclear documentation and delayed communication can cost more than the initial price difference."], points: ["Technical understanding of the requested product", "Specific and reviewable quality documentation", "Realistic production and delivery planning", "Clear payment, packaging and shipping terms", "Support after the shipment is received"] },
-      { heading: "A Streamlined Ordering Process", paragraphs: ["Send Leaxion the product name or target sequence, required purity, quantity and destination through WhatsApp. Our team reviews the request, confirms available documentation and provides a tailored quotation. Order timing and logistics are agreed before payment."] },
-    ],
-  },
-  {
-    slug: "beauty-peptide-supplier", title: "Beauty Peptide Supplier: Leaxion Peptide", date: "16 March 2026", image: assetPath("/images/blog/beauty-peptide-supplier.png"),
-    summary: "Beauty peptide sourcing requires consistent specifications, traceable batches and close coordination between research, formulation and procurement teams.",
-    sections: [
-      { heading: "Peptide Supply for Cosmetic Research", paragraphs: ["Beauty and cosmetic research teams work with peptides across screening, formulation development and analytical evaluation. The supplier’s role is to deliver material that matches the agreed specification and is supported by appropriate batch information.", "Leaxion supports catalog and custom peptide inquiries for qualified research and product-development organizations."] },
-      { heading: "Consistency Matters in Formulation Work", paragraphs: ["A material may be evaluated across multiple prototypes and stability studies. Consistency between research batches helps teams interpret results and plan further development with fewer variables."], points: ["Confirm purity and physical form", "Record the relevant batch number", "Review storage and packaging information", "Align repeat-order specifications with the initial evaluation"] },
-      { heading: "Custom Specifications and Scale", paragraphs: ["Some programs require a standard catalog item, while others need a specific sequence, modification, purity or quantity. A detailed request enables feasibility review and prevents assumptions about what the buyer expects."] },
-      { heading: "Documentation and Traceability", paragraphs: ["Professional buyers should retain quotations, specifications, Certificates of Analysis and shipping records as part of their procurement file. Traceability is particularly important when a material progresses from initial research to repeated development work."] },
-      { heading: "Choosing a Long-Term Beauty Peptide Supplier", paragraphs: ["Look for a partner that responds clearly, distinguishes confirmed facts from estimates and can support both initial evaluation and repeat procurement. Leaxion combines direct WhatsApp communication with worldwide B2B supply support."] },
-    ],
-  },
-  {
-    slug: "choosing-a-peptide-manufacturer", title: "How to Choose a Reliable Peptide Manufacturer for Your Business Needs", date: "12 March 2026", image: assetPath("/images/blog/choosing-a-peptide-manufacturer.png"),
-    summary: "The right peptide manufacturer should be evaluated through verifiable quality information, realistic production capability, transparent commercial terms and dependable support.",
-    sections: [
-      { heading: "What Factors Should Businesses Review?", paragraphs: ["Choosing only by quoted price can expose a buyer to inconsistent material, incomplete documents or unreliable delivery. A structured supplier review gives procurement and research teams a clearer basis for comparison."], points: ["Quality-control methods and batch documentation", "Experience with the requested peptide or sequence", "Custom synthesis and scale-up capability", "Communication speed and technical clarity", "Packaging, shipping and after-sales support"] },
-      { heading: "Quality Control You Can Verify", paragraphs: ["Ask for specific evidence rather than broad marketing claims. The supplier should explain what documentation is available, how it relates to the supplied lot and which product attributes are covered. Requirements should be agreed before ordering."] },
-      { heading: "Experience, Customization and Scalability", paragraphs: ["Experience matters when a project includes difficult sequences, special specifications or repeat supply. Buyers should also confirm whether the manufacturer can move from evaluation quantities to larger orders without changing the agreed quality target."] },
-      { heading: "Red Flags in Peptide Sourcing", paragraphs: ["Warning signs include pricing that cannot be explained, vague purity statements, documents that are not tied to a batch, pressure to pay before specifications are confirmed, and slow or inconsistent responses to technical questions."], points: ["Unverifiable quality claims", "No clear product specification", "Missing batch identification", "Unrealistic production or shipping promises", "Payment instructions that do not match the verified supplier contact"] },
-      { heading: "Supporting International B2B Buyers", paragraphs: ["International buyers benefit from clear written quotations, agreed payment methods, appropriate packaging and traceable delivery. Leaxion supports PayPal, USDT, USDC, Wise and T/T, with current options confirmed during quotation."] },
-    ],
-  },
-  {
-    slug: "bpc157-supplier", title: "BPC157 Supplier: Why Leaxion Is Your Trusted Partner", date: "8 March 2026", image: assetPath("/images/blog/bpc157-supplier.png"),
-    summary: "For professional BPC157 procurement, buyers should prioritize traceable quality information, specification consistency and a supplier that can support repeat research orders.",
-    sections: [
-      { heading: "Evaluating a BPC157 Supplier", paragraphs: ["A supplier should be able to discuss product format, purity target, quantity, packaging and documentation before providing final commercial terms. Clear answers at this stage are a practical indicator of how the supplier will manage the order."] },
-      { heading: "Batch Consistency and Analytical Records", paragraphs: ["Research buyers need documentation that can be associated with the product they receive. When reviewing a Certificate of Analysis, confirm the product name, batch reference and reported specification rather than relying on a generic example."] },
-      { heading: "Packaging for Stability and Transit", paragraphs: ["Lyophilized research peptides are sealed and protected for shipment according to the order and destination. Packaging arrangements and dispatch timing should be confirmed before international delivery, particularly when the buyer has specific receiving procedures."] },
-      { heading: "Support for Bulk and Repeat Procurement", paragraphs: ["Leaxion works with qualified buyers on evaluation, repeat and bulk BPC157 requirements. Sharing forecast quantities helps our team discuss availability, documentation and delivery planning more accurately."] },
-      { heading: "Responsible Research Supply", paragraphs: ["BPC157 supplied by Leaxion is for laboratory research and analytical use only. We do not provide medical advice or instructions for human use. Customers must comply with applicable laws and institutional controls."] },
-    ],
-  },
-  {
-    slug: "verify-peptide-suppliers", title: "Beware of Imposters and Verify Leaxion Official Contacts", date: "4 March 2026", image: assetPath("/images/blog/verify-peptide-suppliers.png"),
-    summary: "Impersonation and unverified sales accounts create real risks for peptide buyers. Confirm the business contact before sharing procurement information or arranging payment.",
-    sections: [
-      { heading: "Why Contact Verification Matters", paragraphs: ["Unverified social accounts may reuse a company name, logo or product images without authorization. A professional-looking profile alone does not prove that the person represents Leaxion.", "Verification protects your payment, purchasing records and supply chain from avoidable fraud."] },
-      { heading: "Warning Signs to Watch For", paragraphs: ["Pause the conversation when an account uses urgency, refuses to provide consistent company information or changes payment instructions without explanation."], points: ["A newly created or incomplete social profile", "Pricing far below a documented quotation", "Requests to pay an unrelated individual", "Refusal to provide product or batch documentation", "Conflicting phone numbers or business identities"] },
-      { heading: "How to Verify a Leaxion Contact", paragraphs: ["Use the primary WhatsApp link published on this website: +1 213 703 8679. Send the name and contact details of the person you are checking, and wait for confirmation before proceeding.", "Do not rely on contact details sent only through a third-party social platform. Return to the official website and start a new conversation through the displayed WhatsApp button."] },
-      { heading: "What to Do If You Find an Imposter", paragraphs: ["Do not send payment or confidential purchasing information. Save screenshots, record the profile URL, report the account to the platform and notify Leaxion through the official WhatsApp number."] },
-      { heading: "A Final Procurement Check", paragraphs: ["Before confirming an order, make sure the supplier identity, quotation, product specification, payment recipient and delivery details are consistent. If any item changes unexpectedly, stop and verify again."] },
+      { heading: "Use the original verification link", paragraphs: ["A screenshot alone is not enough. Match the report number and unique key on the laboratory’s original verification page."] },
+      { heading: "Match the product and batch", paragraphs: ["Confirm the product name, specification, sample identifier and test date. Request the current batch report before ordering."] },
     ],
   },
 ];
-
-export const whatsappUrl = "https://wa.me/12137038679";

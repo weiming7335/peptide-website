@@ -1,10 +1,6 @@
-import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { whatsappUrl } from "@/lib/content";
-import { assetPath } from "@/lib/site-config";
+import { christineWhatsapp, email, lunaWhatsapp, whatsappChannel } from "@/lib/content";
 
-export default function ContactPage() {
-  return <><SiteHeader /><main><PageHero title="Contact US" /><section className="contact-page section-pad"><div className="section-shell"><div className="contact-image"><Image src={assetPath("/images/contact.webp")} alt="Contact Leaxion" fill sizes="45vw" /></div><div><p className="eyebrow">CONTACT OUR TEAM</p><h1>Secure Your Premium Peptides – Connect with Our Expert Team Today!</h1><p>For products, documentation, quantities and delivery questions, speak directly with our B2B sales team.</p><span>WHATSAPP</span><a className="contact-number" href={whatsappUrl} target="_blank" rel="noreferrer">+1 213 703 8679</a><a className="primary-button" href={whatsappUrl} target="_blank" rel="noreferrer">SEND A MESSAGE <b>→</b></a></div></div></section></main><SiteFooter /></>;
-}
+export default function ContactPage(){return <><SiteHeader/><main><PageHero title="Talk to the Jike Peptide Team"/><section className="section-pad contact-page"><div className="section-shell contact-grid"><div><p className="eyebrow">PRIMARY CONTACT</p><h2>Send Christine your list.</h2><p>Include product names, specifications, kit quantities and destination. We will confirm current pricing, available documentation and delivery options.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">WhatsApp Christine</a></div><div className="contact-cards"><a href={christineWhatsapp} target="_blank" rel="noreferrer"><span>PRIMARY WHATSAPP</span><strong>Christine</strong><p>+1 213 703 8679</p></a><a href={lunaWhatsapp} target="_blank" rel="noreferrer"><span>ALTERNATE WHATSAPP</span><strong>Luna</strong><p>+852 9841 7612</p></a><a href={`mailto:${email}`}><span>EMAIL</span><strong>Business inquiries</strong><p>{email}</p></a><a href={whatsappChannel} target="_blank" rel="noreferrer"><span>UPDATES</span><strong>WhatsApp Channel</strong><p>Feedback, arrivals and offers</p></a></div></div></section></main><SiteFooter/></>;}
