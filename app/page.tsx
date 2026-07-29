@@ -40,7 +40,7 @@ export default function Home() {
 
     <section className="section-pad home-company"><div className="section-shell home-company-grid">
       <div><p className="eyebrow">ABOUT JIKE PEPTIDE</p><h2>The international team of JikeBioTech.</h2><p>Jike Peptide Team supports research customers worldwide with catalog supply, batch documentation, order coordination and custom packaging.</p><p>Each standard kit contains 10 vials. Custom labels and packaging are typically prepared in 1–2 weeks.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Talk with Christine</a></div>
-      <figure><video controls playsInline preload="metadata" poster={assetPath("/images/real/inventory.jpg")}><source src={assetPath("/video/factory.mp4")} type="video/mp4"/></video><figcaption>JikeBioTech company and factory overview</figcaption></figure>
+      <figure><video controls playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")}><source src={assetPath("/video/factory.mp4")} type="video/mp4"/></video><figcaption>JikeBioTech company and factory overview</figcaption></figure>
     </div></section>
 
     <section className="section-pad reviews"><div className="section-shell">
