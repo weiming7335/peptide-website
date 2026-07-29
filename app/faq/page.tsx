@@ -5,7 +5,7 @@ import { christineWhatsapp } from "@/lib/content";
 
 const faqs=[
   ["What is the minimum order?","The standard minimum order is one kit. Each standard kit contains 10 vials. Individual vials are not sold."],
-  ["Are prices shown on the website?","No. Current retail, wholesale and custom prices are provided directly by Christine because specifications, quantities and delivery requirements vary."],
+  ["Are prices shown on the website?","Selected popular products show the current starting price for one standard 10-vial kit. Wholesale, custom packaging and current batch quotations are provided directly by Christine."],
   ["Can I review a COA before ordering?","Yes. Public third-party links are available in our COA center. Contact us to confirm the documentation for the current batch."],
   ["How long does U.S. delivery take?","USPS normally takes 10–15 business days after dispatch and costs $50. FedEx normally takes 4–7 business days after dispatch and costs $80. Carrier transit times may vary."],
   ["Do you offer free shipping?","Orders of $500 or more include complimentary USPS shipping. FedEx is available for an additional $30 on qualifying orders."],

@@ -76,6 +76,20 @@ export const products: Product[] = [
 
 export const featuredProducts = products.filter((item) => item.featured);
 
+// One-kit starting prices from JP_Team_Price_List.xlsx (10 vials per kit).
+export const startingPrices: Record<string, number> = {
+  "retatrutide": 65,
+  "tirzepatide": 63,
+  "bpc-157": 42,
+  "bpc-157-tb-500": 102,
+  "ghk-cu": 42,
+  "glow": 178,
+  "klow": 188,
+  "mots-c": 58,
+  "nad-plus": 66,
+  "tb-500": 77,
+};
+
 export type Certificate = {
   slug: string;
   name: string;

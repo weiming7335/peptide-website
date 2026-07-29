@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { assetPath } from "@/lib/site-config";
-import { certificates, christineWhatsapp, featuredProducts, testimonials, whatsappChannel } from "@/lib/content";
+import { certificates, christineWhatsapp, featuredProducts, startingPrices, testimonials, whatsappChannel } from "@/lib/content";
 import { ProductVisual } from "@/components/product-visual";
 
 export default function Home() {
@@ -28,7 +28,7 @@ export default function Home() {
         <div className="section-heading"><div><p className="eyebrow">POPULAR FIRST</p><h2>Most requested products</h2></div><Link href="/peptide">View full catalog →</Link></div>
         <div className="product-grid">{featuredProducts.slice(0,8).map((item)=><article className="product-card" key={item.slug}>
           <Link href={`/peptide/${item.slug}`}><ProductVisual item={item} /></Link>
-          <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p></div>
+          <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p><p className="product-starting-price"><small>FROM</small> ${startingPrices[item.slug]} <em>/ kit</em></p></div>
         </article>)}</div>
       </div>
     </section>
