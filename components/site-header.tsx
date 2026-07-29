@@ -15,11 +15,10 @@ export function SiteHeader() {
         <nav>
           <Link href="/peptide">Products</Link>
           <Link href="/coa">COA Verification</Link>
-          <Link href="/about">Company</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/contact">Contact</Link>
         </nav>
-        <details className="mobile-menu"><summary>Menu</summary><div><Link href="/peptide">Products</Link><Link href="/coa">COA</Link><Link href="/about">Company</Link><Link href="/faq">FAQ</Link><Link href="/contact">Contact</Link></div></details>
+        <details className="mobile-menu"><summary>Menu</summary><div><Link href="/peptide">Products</Link><Link href="/coa">COA</Link><Link href="/faq">FAQ</Link><Link href="/contact">Contact</Link></div></details>
         <a className="header-cta" href={christineWhatsapp} target="_blank" rel="noreferrer">Get current price</a>
       </div>
     </header>

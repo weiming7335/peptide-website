@@ -38,19 +38,18 @@ export default function Home() {
       <div className="report-stack">{certificates.slice(0,4).map((item)=><a href={item.reportUrl} target="_blank" rel="noreferrer" key={item.slug}><span>{item.testType}</span><strong>{item.name}</strong><b>Verify ↗</b></a>)}</div>
     </div></section>
 
-    <section className="section-pad real-proof"><div className="section-shell">
-      <div className="section-heading"><div><p className="eyebrow">REAL OPERATIONS</p><h2>Stock, preparation and fulfillment</h2></div><Link href="/about">See our company →</Link></div>
-      <div className="proof-gallery">
-        <figure className="wide"><Image src={assetPath("/images/real/inventory.jpg")} alt="Research product inventory" fill sizes="60vw" /><figcaption>Organized ready stock</figcaption></figure>
-        <figure><Image src={assetPath("/images/real/order-sorting.jpg")} alt="Order preparation" fill sizes="40vw" /><figcaption>Order preparation</figcaption></figure>
-        <figure><Image src={assetPath("/images/real/custom-kits.jpg")} alt="Custom research kits" fill sizes="40vw" /><figcaption>Custom kit support</figcaption></figure>
-      </div>
+    <section className="section-pad home-company"><div className="section-shell home-company-grid">
+      <div><p className="eyebrow">ABOUT JIKE PEPTIDE</p><h2>The international team of JikeBioTech.</h2><p>Jike Peptide Team supports research customers worldwide with catalog supply, batch documentation, order coordination and custom packaging.</p><p>Each standard kit contains 10 vials. Custom labels and packaging are typically prepared in 1–2 weeks.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Talk with Christine</a></div>
+      <figure><video controls playsInline preload="metadata" poster={assetPath("/images/real/inventory.jpg")}><source src={assetPath("/video/factory.mp4")} type="video/mp4"/></video><figcaption>JikeBioTech company and factory overview</figcaption></figure>
     </div></section>
 
     <section className="section-pad reviews"><div className="section-shell">
       <div className="section-heading"><div><p className="eyebrow">CUSTOMER SHARES</p><h2>Real delivery feedback</h2></div><a href={whatsappChannel} target="_blank" rel="noreferrer">More on WhatsApp Channel ↗</a></div>
-      <div className="review-grid">{testimonials.slice(0,6).map(item=><blockquote key={item.name}><div>“</div><p>{item.quote}</p><footer><strong>{item.name}</strong><span>{item.note}</span></footer></blockquote>)}</div>
-      <p className="review-note">Customer names are displayed as shared. Individual carrier transit times may vary. Reviews describe service and delivery experiences only.</p>
+      <div className="review-grid">{testimonials.slice(0,6).map(item=><blockquote key={item.name}>
+        <figure><Image src={assetPath(item.image)} alt={`Order photo shared with ${item.name}'s delivery feedback`} fill sizes="(max-width: 700px) 100vw, 33vw" /></figure>
+        <div className="review-copy"><div>“</div><p>{item.quote}</p><footer><strong>{item.name}</strong><span>{item.note}</span></footer></div>
+      </blockquote>)}</div>
+      <p className="review-note">Photos show real order preparation and product presentation. Customer names and comments are displayed as shared. Individual carrier transit times may vary.</p>
     </div></section>
 
     <section className="shipping section-pad"><div className="section-shell shipping-grid">
