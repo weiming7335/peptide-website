@@ -1,20 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
 import { PageHero } from "@/components/page-hero";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { certificates, christineWhatsapp } from "@/lib/content";
+import { christineWhatsapp, publishedCertificates } from "@/lib/content";
+import { assetPath } from "@/lib/site-config";
 
 export default function CoaPage(){
   return <><SiteHeader /><main><PageHero title="Third-party COA verification" eyebrow="ORIGINAL REPORT LINKS" />
-    <section className="coa-intro"><div className="section-shell"><div><h2>Verify at the source.</h2><p>Each available entry links to the original Janoshik report page. Match the product, report number and unique verification key before relying on a document.</p></div><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Request current batch COA</a></div></section>
-    <section className="section-pad"><div className="section-shell coa-grid">{certificates.map(item=><article key={item.slug}>
-      <Link className="coa-paper" href={`/coa/${item.slug}`}>
-        <div className="coa-paper-head"><b>JANOSHIK</b><span>ANALYTICAL</span></div>
-        <div className="coa-paper-mark">JP</div>
-        <dl><div><dt>REPORT</dt><dd>#{item.reportNumber}</dd></div><div><dt>SAMPLE</dt><dd>{item.sampleCode}</dd></div><div><dt>TEST</dt><dd>{item.testType}</dd></div></dl>
-        <small>THIRD-PARTY VERIFICATION RECORD</small>
+    <section className="coa-intro"><div className="section-shell"><div><h2>View the actual reports.</h2><p>These published Janoshik report images show the client, manufacturer, batch, measured result and verification key. For another product or the current production batch, message Christine directly.</p></div><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Request another COA</a></div></section>
+    <section className="section-pad"><div className="section-shell coa-grid">{publishedCertificates.map(item=><article key={item.slug}>
+      <Link className="coa-report-thumb" href={`/coa/${item.slug}`}>
+        <Image src={assetPath(item.reportImage!)} alt={`Janoshik test report ${item.reportNumber} for ${item.name}`} fill sizes="(max-width: 700px) 50vw, 25vw" />
+        <span>VIEW FULL REPORT</span>
       </Link>
       <span>{item.testType}</span><h2>{item.name}</h2><p>Report #{item.reportNumber} · Key {item.verificationKey}</p><div><Link href={`/coa/${item.slug}`}>View report details</Link><a href={item.reportUrl} target="_blank" rel="noreferrer">Original ↗</a></div>
-    </article>)}</div></section>
+    </article>)}</div>
+    <div className="section-shell coa-contact-banner"><div><span>NEED A DIFFERENT PRODUCT OR BATCH?</span><h2>Ask Christine for the latest report.</h2><p>Send the product name and specification by WhatsApp. We will provide the available current-batch documentation privately.</p></div><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Message Christine →</a></div>
+    </section>
   </main><SiteFooter /></>;
 }

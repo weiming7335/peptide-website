@@ -84,7 +84,14 @@ export type Certificate = {
   reportNumber: string;
   verificationKey: string;
   sampleCode: string;
+  reportImage?: string;
 };
+
+const publishedReportNumbers = new Set([
+  "148325", "153775", "153776", "153787", "153788", "153791", "153792",
+  "157419", "157420", "157421", "198332", "198333", "198334", "198335",
+  "198338", "198339", "200491", "200492",
+]);
 
 const certificate = (slug: string, name: string, testType: Certificate["testType"], reportUrl: string): Certificate => {
   const record = reportUrl.split("/").pop() ?? "";
@@ -98,6 +105,7 @@ const certificate = (slug: string, name: string, testType: Certificate["testType
     reportNumber,
     sampleCode: reportKey[0] ?? "",
     verificationKey: reportKey[1] ?? "",
+    reportImage: publishedReportNumbers.has(reportNumber) ? `/images/coa/report-${reportNumber}.png` : undefined,
   };
 };
 
@@ -125,6 +133,8 @@ export const certificates: Certificate[] = [
   ...coa("TR10T","Tirzepatide 10mg","https://janoshik.com/tests/153771-TR10_C7KQKE2DWNEL","https://janoshik.com/tests/153772-TR10_V64SECCS79JL"),
   ...coa("IPA10","Ipamorelin 10mg","https://janoshik.com/tests/153789-IPA10_DFCD14XCWEW4","https://janoshik.com/tests/153790-IPA10_NDVT4YUR4L44"),
 ];
+
+export const publishedCertificates = certificates.filter((item) => item.reportImage);
 
 export const testimonials = [
   { name: "aebowman", quote: "Ordered July 15, delivered July 21! Thanks for the great service.", note: "Customer review" },
