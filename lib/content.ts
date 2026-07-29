@@ -99,6 +99,7 @@ export type Certificate = {
   verificationKey: string;
   sampleCode: string;
   reportImage?: string;
+  measuredResult?: string;
 };
 
 const publishedReportNumbers = new Set([
@@ -106,6 +107,11 @@ const publishedReportNumbers = new Set([
   "157419", "157420", "157421", "198332", "198333", "198334", "198335",
   "198338", "198339", "200491", "200492",
 ]);
+
+const measuredResults: Record<string, string> = {
+  "157419": "41.84 mg · Purity 99.312%",
+  "157420": "Endotoxin 2.579 EU/vial",
+};
 
 const certificate = (slug: string, name: string, testType: Certificate["testType"], reportUrl: string): Certificate => {
   const record = reportUrl.split("/").pop() ?? "";
@@ -120,6 +126,7 @@ const certificate = (slug: string, name: string, testType: Certificate["testType
     sampleCode: reportKey[0] ?? "",
     verificationKey: reportKey[1] ?? "",
     reportImage: publishedReportNumbers.has(reportNumber) ? `/images/coa/report-${reportNumber}.png` : undefined,
+    measuredResult: measuredResults[reportNumber],
   };
 };
 
