@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { assetPath } from "@/lib/site-config";
-import { certificates, christineWhatsapp, featuredProducts, startingPrices, testimonials, whatsappChannel } from "@/lib/content";
+import { certificates, christineWhatsapp, featuredProducts, testimonials, whatsappChannel } from "@/lib/content";
 import { ProductVisual } from "@/components/product-visual";
 
 export default function Home() {
@@ -16,15 +16,15 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
           <h1>Research peptide supply, backed by verifiable data.</h1>
-          <p>One-kit ordering, batch-linked third-party testing, worldwide delivery and custom packaging support for research customers.</p>
-          <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Ask Christine for price</a><Link className="secondary-button" href="/coa">Verify COA</Link></div>
-          <div className="hero-proof"><span><b>1 kit</b>Minimum order</span><span><b>10 vials</b>Per kit</span><span><b>34 reports</b>Linked verification</span></div>
+          <p>Multi-SKU wholesale supply, batch-linked analytical documentation and private-label support for research-sector buyers worldwide.</p>
+          <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Request a procurement quote</a><Link className="secondary-button" href="/coa">Review documentation</Link></div>
+          <div className="hero-proof"><span><b>47 compounds</b>Catalog coverage</span><span><b>10 vials</b>Standard kit</span><span><b>34 reports</b>Linked verification</span></div>
         </div>
       </div>
     </section>
 
     <section className="trust-strip"><div className="section-shell">
-      <span>Third-party COA links</span><span>USPS & FedEx options</span><span>Custom label & packaging</span><span>Worldwide fulfillment</span>
+      <span>Batch-linked COA</span><span>Wholesale multi-SKU supply</span><span>Private label & packaging</span><span>Worldwide fulfillment</span>
     </div></section>
 
     <section className="section-pad">
@@ -32,10 +32,24 @@ export default function Home() {
         <div className="section-heading"><div><p className="eyebrow">POPULAR FIRST</p><h2>Most requested products</h2></div><Link href="/peptide">View full catalog →</Link></div>
         <div className="product-grid">{featuredProducts.slice(0,8).map((item)=><article className="product-card" key={item.slug}>
           <Link href={`/peptide/${item.slug}`}><ProductVisual item={item} /></Link>
-          <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p><p className="product-starting-price"><small>FROM</small> ${startingPrices[item.slug]} <em>/ kit</em></p></div>
+          <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p><Link className="product-procurement-link" href={`/peptide/${item.slug}`}>Specifications & procurement →</Link></div>
         </article>)}</div>
       </div>
     </section>
+
+    <section className="market-strip"><div className="section-shell">
+      <span>GLOBAL SUPPLY</span><p>United States</p><p>United Kingdom</p><p>Germany</p><p>Switzerland</p><p>Australia</p><p>Japan</p><p>Singapore</p><b>+ more</b>
+    </div></section>
+
+    <section className="section-pad b2b-audience"><div className="section-shell">
+      <div className="b2b-heading"><div><p className="eyebrow">WHO WE SERVE</p><h2>Built for research-sector procurement.</h2></div><p>Commercial supply coordination for qualified buyers, with low-volume evaluation available before larger programs.</p></div>
+      <div className="audience-grid">
+        <article><span>01</span><h3>Independent Research Laboratories</h3></article>
+        <article><span>02</span><h3>Peptide Distributors & Resellers</h3></article>
+        <article><span>03</span><h3>Private-Label Product Teams</h3></article>
+        <article><span>04</span><h3>Research Suppliers & Institutions</h3></article>
+      </div>
+    </div></section>
 
     <section className="quality section-pad"><div className="section-shell quality-grid">
       <div><p className="eyebrow">QUALITY EVIDENCE</p><h2>Verify the report—not just the claim.</h2><p>Our COA center links directly to third-party report pages for available mass/purity and endotoxin tests. Request the current batch documentation before ordering.</p><Link className="primary-button" href="/coa">Explore COA center</Link></div>
@@ -56,10 +70,14 @@ export default function Home() {
       <p className="review-note">Photos show real order preparation and product presentation. Customer names and comments are displayed as shared. Individual carrier transit times may vary.</p>
     </div></section>
 
-    <section className="shipping section-pad"><div className="section-shell shipping-grid">
-      <div><p className="eyebrow">U.S. DELIVERY</p><h2>Choose the speed that fits your order.</h2><p>Orders over $500 include complimentary USPS shipping. FedEx upgrades remain available.</p></div>
-      <article><span>USPS</span><strong>$50</strong><p>10–15 business days after dispatch</p></article>
-      <article><span>FedEx</span><strong>$80</strong><p>4–7 business days after dispatch</p></article>
+    <section className="procurement section-pad"><div className="section-shell">
+      <div className="b2b-heading"><div><p className="eyebrow">WHOLESALE PEPTIDE PROCUREMENT</p><h2>A clear path from requirement to dispatch.</h2></div><p>Send one product or a multi-SKU list. Christine coordinates specifications, commercial terms, available documentation and fulfillment.</p></div>
+      <div className="procurement-grid">
+        <article><span>01</span><h3>Send requirements</h3><p>Product, specification, quantity, destination and packaging needs.</p></article>
+        <article><span>02</span><h3>Review quotation</h3><p>Confirm pricing, stock status, documentation scope and shipping option.</p></article>
+        <article><span>03</span><h3>Approve order</h3><p>Receive the pro forma details and confirm payment arrangements.</p></article>
+        <article><span>04</span><h3>Fulfillment</h3><p>Batch confirmation, packing, dispatch and tracking coordination.</p></article>
+      </div>
     </div></section>
 
     <section className="final-cta"><div className="section-shell"><div><span>READY TO REQUEST A QUOTE?</span><h2>Send Christine your product list.</h2></div><a className="light-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Start on WhatsApp →</a></div></section>

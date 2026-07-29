@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { certificates, christineWhatsapp, products, startingPrices } from "@/lib/content";
+import { certificates, christineWhatsapp, products } from "@/lib/content";
 import { ProductVisual } from "@/components/product-visual";
 import { productKnowledge } from "@/lib/product-knowledge";
 import { assetPath } from "@/lib/site-config";
@@ -24,24 +24,23 @@ export async function generateMetadata({params}:{params:Promise<{slug:string}>})
 
 export default async function ProductPage({params}:{params:Promise<{slug:string}>}){
   const {slug}=await params; const item=products.find(product=>product.slug===slug); if(!item) notFound();
-  const message=encodeURIComponent(`Hi Christine, I’m interested in ${item.name}. Please send me the current price and batch COA.`);
+  const message=encodeURIComponent(`Hi Christine, I’m sourcing ${item.name}. Please send the current specification, volume quotation and available batch documentation.`);
   const knowledge=productKnowledge[slug];
   const productCertificates=certificates.filter(certificate=>item.codes.some(code=>certificate.sampleCode.toLowerCase().startsWith(code.replace(/[^a-z0-9]/gi,"").toLowerCase())) || (slug==="mots-c" && certificate.sampleCode==="MOTS40"));
   const related=products.filter(product=>product.slug!==slug && product.category===item.category).slice(0,3);
-  const startingPrice=startingPrices[slug];
   return <><SiteHeader /><main>
     <section className="product-detail section-shell">
       <div className="detail-art"><ProductVisual item={item} detail /><span>Research Use Only · Not for Human Consumption</span></div>
       <div className="detail-copy"><p className="eyebrow">{item.category}</p><h1>{item.name}</h1>
         {knowledge && <p className="product-full-name">{knowledge.fullName}</p>}
-        <p>{knowledge?.shortDescription ?? "Available in sealed research kits with 10 vials per kit. One-kit minimum order with retail, wholesale and custom packaging support."}</p>
+        <p>{knowledge?.shortDescription ?? "Available for research-sector procurement in sealed 10-vial kits, with multi-SKU wholesale and private-label support."}</p>
         <div className="procurement-facts">
-          <div><span>STARTING AT</span><strong>{startingPrice ? `$${startingPrice}` : "ASK"}</strong><small>per 10-vial kit</small></div>
-          <div><span>MOQ</span><strong>1 KIT</strong><small>retail & wholesale</small></div>
+          <div><span>QUOTE BASIS</span><strong>VOLUME</strong><small>specification & quantity</small></div>
+          <div><span>EVALUATION MOQ</span><strong>1 KIT</strong><small>10 research vials</small></div>
           <div><span>DOCUMENTATION</span><strong>{productCertificates.length ? `${productCertificates.length} REPORTS` : "ON REQUEST"}</strong><small>confirm current batch</small></div>
         </div>
         <div className="spec-table">{item.specs.map((spec,index)=><div key={spec}><span>{item.codes[index] ?? item.codes[0]}</span><strong>{spec}</strong><b>10 vials / kit</b></div>)}</div>
-        <div className="button-row"><a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Get current price</a><Link className="secondary-button" href="/coa">Check available COA</Link></div>
+        <div className="button-row"><a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request procurement quote</a><Link className="secondary-button" href="/coa">Check available COA</Link></div>
         <p className="batch-note">Price varies by specification and quantity. Request the currently available batch report before ordering.</p>
       </div>
     </section>
@@ -76,7 +75,7 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
       <div className="context-grid">{knowledge.researchContext.map((context,index)=><article key={context.title}><span>0{index+1}</span><h3>{context.title}</h3><p>{context.body}</p></article>)}</div>
       <div className="reference-list"><h3>Selected primary literature</h3>{knowledge.references.map(reference=><a key={reference.url} href={reference.url} target="_blank" rel="noreferrer"><span>{reference.journal}</span><strong>{reference.title}</strong><b>↗</b></a>)}</div>
     </div></section>}
-    <section className="detail-info section-pad"><div className="section-shell info-grid"><article><span>01</span><h2>Batch documentation</h2><p>Ask for current batch-linked third-party documentation before ordering.</p></article><article><span>02</span><h2>Worldwide delivery</h2><p>USPS and FedEx options for the United States, with international fulfillment support.</p></article><article><span>03</span><h2>Custom presentation</h2><p>Label and packaging customization is normally completed in 1–2 weeks.</p></article></div></section>
+    <section className="detail-info section-pad"><div className="section-shell info-grid"><article><span>01</span><h2>Batch documentation</h2><p>Ask for current batch-linked third-party documentation before ordering.</p></article><article><span>02</span><h2>Procurement support</h2><p>Single-product evaluation and consolidated multi-SKU wholesale quotations are available.</p></article><article><span>03</span><h2>Custom presentation</h2><p>Label and packaging customization is normally completed in 1–2 weeks.</p></article></div></section>
     {knowledge && <section className="product-faq section-pad"><div className="section-shell faq-layout"><div><p className="eyebrow">PRODUCT FAQ</p><h2>Before you request a quote.</h2><p>Clear procurement answers, with research-use boundaries kept visible.</p><a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Ask Christine</a></div><div className="faq-list">{knowledge.faqs.map(faq=><details key={faq.question}><summary>{faq.question}<span>+</span></summary><p>{faq.answer}</p></details>)}</div></div></section>}
     {related.length>0 && <section className="related-products section-pad"><div className="section-shell"><div className="section-heading"><div><p className="eyebrow">RELATED CATALOG</p><h2>Explore the same research category.</h2></div><Link href="/peptide">Full catalog</Link></div><div className="related-grid">{related.map(product=><article key={product.slug}><span>{product.category}</span><h3><Link href={`/peptide/${product.slug}`}>{product.name}</Link></h3><p>{product.specs.join(" · ")}</p><Link href={`/peptide/${product.slug}`}>View specifications →</Link></article>)}</div></div></section>}
   </main><SiteFooter /></>;
