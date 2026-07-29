@@ -8,14 +8,14 @@ import { christineWhatsapp } from "@/lib/content";
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
   const navProps = (href: string) => {
     const active = pathname === href || pathname.startsWith(`${href}/`);
     return { className: active ? "active" : undefined, "aria-current": active ? "page" as const : undefined };
   };
 
   return <>
-    <div className="research-bar">FOR RESEARCH USE ONLY · NOT FOR HUMAN CONSUMPTION</div>
-    <header className="site-header">
+    <header className={`site-header${isHome ? " home-header" : ""}`}>
       <div className="section-shell nav-shell">
         <Link className="brand" href="/" aria-label="Jike Peptide home">
           <Image src={assetPath("/images/jike/logo-blue-jp.jpg")} alt="JP" width={58} height={58} priority />
