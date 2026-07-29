@@ -81,11 +81,29 @@ export type Certificate = {
   name: string;
   testType: "Mass / Purity" | "Endotoxin";
   reportUrl: string;
+  reportNumber: string;
+  verificationKey: string;
+  sampleCode: string;
+};
+
+const certificate = (slug: string, name: string, testType: Certificate["testType"], reportUrl: string): Certificate => {
+  const record = reportUrl.split("/").pop() ?? "";
+  const [reportNumber = "", ...rest] = record.split("-");
+  const reportKey = rest.join("-").split("_");
+  return {
+    slug,
+    name,
+    testType,
+    reportUrl,
+    reportNumber,
+    sampleCode: reportKey[0] ?? "",
+    verificationKey: reportKey[1] ?? "",
+  };
 };
 
 const coa = (code: string, name: string, mass: string, endotoxin: string): Certificate[] => [
-  { slug: `${code.toLowerCase()}-mass-purity`, name, testType: "Mass / Purity", reportUrl: mass },
-  { slug: `${code.toLowerCase()}-endotoxin`, name, testType: "Endotoxin", reportUrl: endotoxin },
+  certificate(`${code.toLowerCase()}-mass-purity`, name, "Mass / Purity", mass),
+  certificate(`${code.toLowerCase()}-endotoxin`, name, "Endotoxin", endotoxin),
 ];
 
 export const certificates: Certificate[] = [

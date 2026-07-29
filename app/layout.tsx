@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "./red-theme.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://jikepeptide.bio"),

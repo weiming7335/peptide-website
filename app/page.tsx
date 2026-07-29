@@ -4,11 +4,12 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { assetPath } from "@/lib/site-config";
 import { certificates, christineWhatsapp, featuredProducts, testimonials, whatsappChannel } from "@/lib/content";
+import { ProductVisual } from "@/components/product-visual";
 
 export default function Home() {
   return <><SiteHeader /><main>
     <section className="hero">
-      <Image className="hero-image" src={assetPath("/images/jike/hero-lab.jpg")} alt="" fill priority sizes="100vw" />
+      <Image className="hero-image" src={assetPath("/images/jike/hero-vials-red.jpg")} alt="" fill priority sizes="100vw" />
       <div className="section-shell hero-content">
         <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
         <h1>Research peptide supply, backed by verifiable data.</h1>
@@ -25,8 +26,8 @@ export default function Home() {
     <section className="section-pad">
       <div className="section-shell">
         <div className="section-heading"><div><p className="eyebrow">POPULAR FIRST</p><h2>Most requested products</h2></div><Link href="/peptide">View full catalog →</Link></div>
-        <div className="product-grid">{featuredProducts.slice(0,8).map((item,index)=><article className="product-card" key={item.slug}>
-          <Link href={`/peptide/${item.slug}`}><div className={`vial-art tone-${index%4}`}><div className="vial"><i></i><span>JP</span></div><small>{item.codes[0]}</small></div></Link>
+        <div className="product-grid">{featuredProducts.slice(0,8).map((item)=><article className="product-card" key={item.slug}>
+          <Link href={`/peptide/${item.slug}`}><ProductVisual item={item} /></Link>
           <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p></div>
         </article>)}</div>
       </div>

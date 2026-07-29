@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { christineWhatsapp, products } from "@/lib/content";
+import { ProductVisual } from "@/components/product-visual";
 
 export function generateStaticParams(){ return products.map(({slug})=>({slug})); }
 
@@ -11,7 +12,7 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
   const message=encodeURIComponent(`Hi Christine, I’m interested in ${item.name}. Please send me the current price and batch COA.`);
   return <><SiteHeader /><main>
     <section className="product-detail section-shell">
-      <div className="detail-art"><div className="vial-art tone-1"><div className="vial"><i></i><span>JP</span></div><small>{item.codes[0]}</small></div><span>Research Use Only</span></div>
+      <div className="detail-art"><ProductVisual item={item} detail /><span>Research Use Only · Not for Human Consumption</span></div>
       <div className="detail-copy"><p className="eyebrow">{item.category}</p><h1>{item.name}</h1><p>Available in sealed research kits with 10 vials per kit. One-kit minimum order with retail, wholesale and custom packaging support.</p>
         <div className="spec-table">{item.specs.map((spec,index)=><div key={spec}><span>{item.codes[index] ?? item.codes[0]}</span><strong>{spec}</strong><b>10 vials / kit</b></div>)}</div>
         <div className="button-row"><a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Get current price</a><Link className="secondary-button" href="/coa">Check available COA</Link></div>
