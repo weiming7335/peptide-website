@@ -44,7 +44,7 @@ export default function Home() {
     </div></section>
 
     <section className="section-pad reviews"><div className="section-shell">
-      <div className="section-heading"><div><p className="eyebrow">CUSTOMER SHARES</p><h2>Real delivery feedback</h2></div><a href={whatsappChannel} target="_blank" rel="noreferrer">More on WhatsApp Channel ↗</a></div>
+      <div className="section-heading"><div><p className="eyebrow">CUSTOMER SHARES</p><h2>Real Customer Feedback</h2></div><a href={whatsappChannel} target="_blank" rel="noreferrer">More on WhatsApp Channel ↗</a></div>
       <div className="review-grid">{testimonials.slice(0,6).map(item=><blockquote key={item.name}>
         <figure><Image src={assetPath(item.image)} alt={`Order photo shared with ${item.name}'s delivery feedback`} fill sizes="(max-width: 700px) 100vw, 33vw" /></figure>
         <div className="review-copy"><div>“</div><p>{item.quote}</p><footer><strong>{item.name}</strong><span>{item.note}</span></footer></div>
