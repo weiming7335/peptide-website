@@ -9,7 +9,7 @@ import { ProductVisual } from "@/components/product-visual";
 export default function Home() {
   return <><SiteHeader /><main>
     <section className="hero">
-      <Image className="hero-image" src={assetPath("/images/jike/hero-lab.jpg")} alt="" fill priority sizes="100vw" />
+      <Image className="hero-image hero-market-image" src={assetPath("/images/jike/hero-global-market.jpg")} alt="Jike Peptide global research product supply" fill priority sizes="100vw" />
       <div className="section-shell hero-content">
         <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
         <h1>Research peptide supply, backed by verifiable data.</h1>
