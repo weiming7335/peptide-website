@@ -9,7 +9,9 @@ import { ProductVisual } from "@/components/product-visual";
 export default function Home() {
   return <><SiteHeader /><main>
     <section className="hero">
-      <Image className="hero-image hero-market-image" src={assetPath("/images/jike/hero-global-market.jpg")} alt="Jike Peptide global research product supply" fill priority sizes="100vw" />
+      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")} aria-hidden="true" tabIndex={-1}>
+        <source src={assetPath("/video/hero-factory-loop.mp4")} type="video/mp4" />
+      </video>
       <div className="section-shell hero-content">
         <div className="hero-copy">
           <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
