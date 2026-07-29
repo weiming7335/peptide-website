@@ -137,12 +137,12 @@ export const certificates: Certificate[] = [
 export const publishedCertificates = certificates.filter((item) => item.reportImage);
 
 export const testimonials = [
-  { name: "aebowman", quote: "Ordered July 15, delivered July 21! Thanks for the great service.", note: "Customer review", image: "/images/reviews/order-01.jpeg" },
-  { name: "DG", quote: "Ordered on July 16 and delivered on July 22. Huge thank you to Christine!", note: "Customer review", image: "/images/reviews/order-02.jpg" },
-  { name: "Shellica", quote: "Ordered July 7 from China and arrived July 27 in Alberta, Canada. Thanks, Christine!", note: "Alberta, Canada", image: "/images/reviews/order-03.png" },
-  { name: "DeeT🐢", quote: "Thank you for your patience. I was wishy-washy about this order, but here it is!", note: "Customer review", image: "/images/reviews/order-04.jpg" },
-  { name: "ZVRII", quote: "Order was placed July 19, I received my tracking number July 20, and delivery from China was completed July 27.", note: "Customer review", image: "/images/reviews/order-05.jpg" },
-  { name: "yeahnooo", quote: "Thank you, JP! I received Reta and KLOW after ordering on July 19, with delivery on July 27. Everything arrived great!", note: "Customer review", image: "/images/reviews/order-06.jpg" },
+  { name: "Glitch_Ghoul☢️", quote: "Ordered July 8th received today July 20th. China to US. Thank you", note: "China to United States", image: "/images/reviews/order-01.jpeg" },
+  { name: "Davuspodhus", quote: "Ordered July 8th, received today July 20th. China warehouse to Canada. Thank you Christine!", note: "China to Canada", image: "/images/reviews/order-02.jpg" },
+  { name: "All Dawg No Pound", quote: "First order with Christine. Ordered late July 10th, confirmed July 11th and delivered July 20th! Was a little weary but everything went smoothly and used Cashapp to pay!", note: "First order with Christine", image: "/images/reviews/order-03.jpg" },
+  { name: "Susan", quote: "I forgot to share my last haul. Reconned them and they are beautiful.", note: "Customer share", image: "/images/reviews/order-04.jpg" },
+  { name: "Shellica", quote: "Ordered July 7 from China, arrived July 27 in Alberta Canada. Thanks Christine!", note: "Alberta, Canada", image: "/images/reviews/order-05.jpg" },
+  { name: "ZVRII", quote: "Order was placed July 19 and I got my tracking number July 20. Delivery was on July 27 from China.", note: "Delivery from China", image: "/images/reviews/order-06.jpg" },
 ];
 
 export const articles = [
