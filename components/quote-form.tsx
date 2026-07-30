@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { trackRedditLead } from "@/lib/reddit-pixel";
 
 const formEndpoint = "https://formspree.io/f/mkodeagk";
 
@@ -43,8 +44,7 @@ export function QuoteForm() {
       });
 
       if (!response.ok) throw new Error("Submission failed");
-      const redditWindow = window as Window & { rdt?: (...args: unknown[]) => void };
-      redditWindow.rdt?.("track", "Lead");
+      trackRedditLead();
       form.reset();
       setState("success");
     } catch {
