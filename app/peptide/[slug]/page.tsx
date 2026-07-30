@@ -40,17 +40,22 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
           <div><span>DOCUMENTATION</span><strong>{productCertificates.length ? `${productCertificates.length} REPORTS` : "ON REQUEST"}</strong><small>confirm current batch</small></div>
         </div>
         <div className="spec-table">{item.specs.map((spec,index)=><div key={spec}><span>{item.codes[index] ?? item.codes[0]}</span><strong>{spec}</strong><b>10 vials / kit</b></div>)}</div>
-        <div className="button-row"><a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request procurement quote</a><Link className="secondary-button" href="/coa">Check available COA</Link></div>
+        <div className="button-row">
+          <a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request procurement quote</a>
+          {productCertificates.length
+            ? <Link className="secondary-button" href="#published-reports">View published reports</Link>
+            : <a className="secondary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request batch documents</a>}
+        </div>
         <p className="batch-note">Price varies by specification and quantity. Request the currently available batch report before ordering.</p>
       </div>
     </section>
-    {productCertificates.length>0 && <section className="product-reports section-pad"><div className="section-shell">
-      <div className="section-heading"><div><p className="eyebrow">PUBLISHED ANALYTICAL DOCUMENTATION</p><h2>See the measured results.</h2></div><Link href="/coa">View all reports</Link></div>
+    {productCertificates.length>0 && <section className="product-reports section-pad" id="published-reports"><div className="section-shell">
+      <div className="section-heading"><div><p className="eyebrow">AVAILABLE ANALYTICAL DOCUMENTATION</p><h2>Review published batch reports.</h2></div><Link href="/coa">View report library</Link></div>
       <div className="product-report-grid">{productCertificates.map(certificate=><article key={certificate.slug}>
         {certificate.reportImage && <Link className="product-report-image" href={`/coa/${certificate.slug}`}><Image src={assetPath(certificate.reportImage)} alt={`Report ${certificate.reportNumber} for ${certificate.name}`} fill sizes="(max-width: 700px) 100vw, 50vw" /></Link>}
         <div><span>{certificate.testType}</span><h3>{certificate.name}</h3>{certificate.measuredResult && <strong className="measured-result">{certificate.measuredResult}</strong>}<p>Report #{certificate.reportNumber} · Verification key {certificate.verificationKey}</p><div><Link href={`/coa/${certificate.slug}`}>View actual report</Link><a href={certificate.reportUrl} target="_blank" rel="noreferrer">Verify original ↗</a></div></div>
       </article>)}</div>
-      <p className="report-disclaimer">Published reports identify the tested sample and batch shown in the document. They do not guarantee a different or future batch; request current batch documentation before purchase.</p>
+      <p className="report-disclaimer">Only products with an available published report appear in this section. Each report applies to the identified test sample and batch—not every current or future lot. Ask Christine to confirm documentation for the batch being quoted.</p>
     </div></section>}
     {knowledge && <section className="knowledge-section section-pad"><div className="section-shell knowledge-layout">
       <article className="knowledge-main">
@@ -59,7 +64,7 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
         <div className="mechanism-list">{knowledge.mechanism.map((point,index)=><div key={point}><span>0{index+1}</span><p>{point}</p></div>)}</div>
       </article>
       <aside className="molecular-card">
-        <div className="molecule-stage"><Image src={assetPath(knowledge.moleculeImage)} alt={`${item.name} molecular visualization`} fill sizes="(max-width: 700px) 100vw, 35vw" /></div>
+        {knowledge.moleculeImage && <div className="molecule-stage"><Image src={assetPath(knowledge.moleculeImage)} alt={`${item.name} molecular visualization`} fill sizes="(max-width: 700px) 100vw, 35vw" /></div>}
         <p className="eyebrow">MOLECULAR PROFILE</p><dl>
           <div><dt>Full name</dt><dd>{knowledge.fullName}</dd></div>
           <div><dt>Sequence</dt><dd>{knowledge.sequence}</dd></div>

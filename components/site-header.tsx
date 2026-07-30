@@ -18,7 +18,7 @@ export function SiteHeader() {
     <header className={`site-header${isHome ? " home-header" : ""}`}>
       <div className="section-shell nav-shell">
         <Link className="brand" href="/" aria-label="Jike Peptide home">
-          <Image src={assetPath("/images/jike/logo-blue-jp.jpg")} alt="JP" width={58} height={58} priority />
+          <Image src={assetPath("/images/jike/logo-blue-jp-transparent.png")} alt="JP" width={92} height={55} priority />
           <span><strong>Jike Peptide</strong><small>INTERNATIONAL RESEARCH SUPPLY</small></span>
         </Link>
         <nav>

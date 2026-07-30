@@ -14,18 +14,32 @@ export default function Home() {
       </video>
       <div className="section-shell hero-content">
         <div className="hero-copy">
-          <p className="eyebrow">Jike Peptide Team · JikeBioTech</p>
-          <h1>Research peptide supply, backed by verifiable data.</h1>
-          <p>Multi-SKU wholesale supply, batch-linked analytical documentation and private-label support for research-sector buyers worldwide.</p>
+          <p className="eyebrow">RESEARCH PEPTIDE SUPPLIER · B2B PROCUREMENT</p>
+          <h1>Research peptide supply. Direct from production.</h1>
+          <p>Multi-SKU sourcing, batch-specific analytical documentation and private-label coordination for laboratories, distributors and research suppliers.</p>
           <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Request a procurement quote</a><Link className="secondary-button" href="/coa">Review documentation</Link></div>
-          <div className="hero-proof"><span><b>47 compounds</b>Catalog coverage</span><span><b>10 vials</b>Standard kit</span><span><b>34 reports</b>Linked verification</span></div>
+          <div className="hero-proof"><span><b>Multi-SKU</b>Consolidated quotations</span><span><b>1 kit</b>Evaluation available</span><span><b>1–2 weeks</b>Custom packaging</span></div>
         </div>
       </div>
+      <div className="market-strip" aria-label="Global supply coverage"><div className="section-shell">
+        <div className="market-destinations">
+          <span>SHIPS TO</span>
+          <p><i>🇺🇸</i> United States</p>
+          <p><i>🇬🇧</i> United Kingdom</p>
+          <p><i>🇩🇪</i> Germany</p>
+          <p><i>🇨🇭</i> Switzerland</p>
+          <p><i>🇦🇺</i> Australia</p>
+          <p><i>🇯🇵</i> Japan</p>
+          <p><i>🇸🇬</i> Singapore</p>
+          <b>+ more</b>
+        </div>
+        <div className="market-services">
+          <p>Cold-chain shipping</p>
+          <p>COA · HPLC · MS</p>
+        </div>
+      </div>
+      </div>
     </section>
-
-    <section className="trust-strip"><div className="section-shell">
-      <span>Batch-linked COA</span><span>Wholesale multi-SKU supply</span><span>Private label & packaging</span><span>Worldwide fulfillment</span>
-    </div></section>
 
     <section className="section-pad">
       <div className="section-shell">
@@ -36,10 +50,6 @@ export default function Home() {
         </article>)}</div>
       </div>
     </section>
-
-    <section className="market-strip"><div className="section-shell">
-      <span>GLOBAL SUPPLY</span><p>United States</p><p>United Kingdom</p><p>Germany</p><p>Switzerland</p><p>Australia</p><p>Japan</p><p>Singapore</p><b>+ more</b>
-    </div></section>
 
     <section className="section-pad b2b-audience"><div className="section-shell">
       <div className="b2b-heading"><div><p className="eyebrow">WHO WE SERVE</p><h2>Built for research-sector procurement.</h2></div><p>Commercial supply coordination for qualified buyers, with low-volume evaluation available before larger programs.</p></div>
@@ -57,7 +67,7 @@ export default function Home() {
     </div></section>
 
     <section className="section-pad home-company"><div className="section-shell home-company-grid">
-      <div><p className="eyebrow">ABOUT JIKE PEPTIDE</p><h2>The international team of JikeBioTech.</h2><p>Jike Peptide Team supports research customers worldwide with catalog supply, batch documentation, order coordination and custom packaging.</p><p>Each standard kit contains 10 vials. Custom labels and packaging are typically prepared in 1–2 weeks.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Talk with Christine</a></div>
+      <div><p className="eyebrow">ABOUT JIKE PEPTIDE</p><p>Each standard kit contains 10 vials. Custom labels and packaging are typically prepared in 1–2 weeks.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Talk with Christine</a></div>
       <figure><video controls playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")}><source src={assetPath("/video/factory.mp4")} type="video/mp4"/></video><figcaption>JikeBioTech company and factory overview</figcaption></figure>
     </div></section>
 
