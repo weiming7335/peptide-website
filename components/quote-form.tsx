@@ -43,6 +43,8 @@ export function QuoteForm() {
       });
 
       if (!response.ok) throw new Error("Submission failed");
+      const redditWindow = window as Window & { rdt?: (...args: unknown[]) => void };
+      redditWindow.rdt?.("track", "Lead");
       form.reset();
       setState("success");
     } catch {
