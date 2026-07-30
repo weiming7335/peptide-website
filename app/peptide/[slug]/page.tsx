@@ -4,10 +4,29 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { certificates, christineWhatsapp, products } from "@/lib/content";
+import { christineWhatsapp, products } from "@/lib/content";
 import { ProductVisual } from "@/components/product-visual";
 import { productKnowledge } from "@/lib/product-knowledge";
 import { assetPath } from "@/lib/site-config";
+
+const standardAnalyticalScope = [
+  {
+    title: "Identity confirmation",
+    body: "Review whether the method and reported result establish the identity of the requested compound rather than relying on the vial label or catalog name alone.",
+  },
+  {
+    title: "Chromatographic purity",
+    body: "Confirm the analytical method, reported purity basis and sample identifier. Purity is a compositional result and must not be treated as measured vial content.",
+  },
+  {
+    title: "Measured content",
+    body: "Compare the nominal specification with a quantitative result when content testing is included. Powder appearance or total fill mass does not establish peptide content.",
+  },
+  {
+    title: "Batch linkage",
+    body: "The quotation, report and supplied presentation should reference the same available lot. Endotoxin or other requested testing must be reviewed as a separate result when applicable.",
+  },
+];
 
 export function generateStaticParams(){ return products.map(({slug})=>({slug})); }
 
@@ -26,7 +45,7 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
   const {slug}=await params; const item=products.find(product=>product.slug===slug); if(!item) notFound();
   const message=encodeURIComponent(`Hi Christine, I’m sourcing ${item.name}. Please send the current specification, volume quotation and available batch documentation.`);
   const knowledge=productKnowledge[slug];
-  const productCertificates=certificates.filter(certificate=>item.codes.some(code=>certificate.sampleCode.toLowerCase().startsWith(code.replace(/[^a-z0-9]/gi,"").toLowerCase())) || (slug==="mots-c" && certificate.sampleCode==="MOTS40"));
+  const analyticalScope=knowledge?.analyticalScope ?? standardAnalyticalScope;
   const related=products.filter(product=>product.slug!==slug && product.category===item.category).slice(0,3);
   return <><SiteHeader /><main>
     <section className="product-detail section-shell">
@@ -37,26 +56,16 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
         <div className="procurement-facts">
           <div><span>QUOTE BASIS</span><strong>VOLUME</strong><small>specification & quantity</small></div>
           <div><span>EVALUATION MOQ</span><strong>1 KIT</strong><small>10 research vials</small></div>
-          <div><span>DOCUMENTATION</span><strong>{productCertificates.length ? `${productCertificates.length} REPORTS` : "ON REQUEST"}</strong><small>confirm current batch</small></div>
+          <div><span>BATCH DOCUMENTS</span><strong>ON REQUEST</strong><small>confirm quoted lot</small></div>
         </div>
         <div className="spec-table">{item.specs.map((spec,index)=><div key={spec}><span>{item.codes[index] ?? item.codes[0]}</span><strong>{spec}</strong><b>10 vials / kit</b></div>)}</div>
         <div className="button-row">
           <a className="primary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request procurement quote</a>
-          {productCertificates.length
-            ? <Link className="secondary-button" href="#published-reports">View published reports</Link>
-            : <a className="secondary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request batch documents</a>}
+          <a className="secondary-button" href={`${christineWhatsapp}?text=${message}`} target="_blank" rel="noreferrer">Request batch documents</a>
         </div>
         <p className="batch-note">Price varies by specification and quantity. Request the currently available batch report before ordering.</p>
       </div>
     </section>
-    {productCertificates.length>0 && <section className="product-reports section-pad" id="published-reports"><div className="section-shell">
-      <div className="section-heading"><div><p className="eyebrow">AVAILABLE ANALYTICAL DOCUMENTATION</p><h2>Review published batch reports.</h2></div><Link href="/coa">View report library</Link></div>
-      <div className="product-report-grid">{productCertificates.map(certificate=><article key={certificate.slug}>
-        {certificate.reportImage && <Link className="product-report-image" href={`/coa/${certificate.slug}`}><Image src={assetPath(certificate.reportImage)} alt={`Report ${certificate.reportNumber} for ${certificate.name}`} fill sizes="(max-width: 700px) 100vw, 50vw" /></Link>}
-        <div><span>{certificate.testType}</span><h3>{certificate.name}</h3>{certificate.measuredResult && <strong className="measured-result">{certificate.measuredResult}</strong>}<p>Report #{certificate.reportNumber} · Verification key {certificate.verificationKey}</p><div><Link href={`/coa/${certificate.slug}`}>View actual report</Link><a href={certificate.reportUrl} target="_blank" rel="noreferrer">Verify original ↗</a></div></div>
-      </article>)}</div>
-      <p className="report-disclaimer">Only products with an available published report appear in this section. Each report applies to the identified test sample and batch—not every current or future lot. Ask Christine to confirm documentation for the batch being quoted.</p>
-    </div></section>}
     {knowledge?.composition && <section className="formulation-profile section-pad"><div className="section-shell">
       <div className="section-heading"><div><p className="eyebrow">DECLARED FORMULATION</p><h2>Component-level specification.</h2><p>A multi-component blend must be reviewed constituent by constituent—not represented as one molecule.</p></div></div>
       <div className="composition-table">
@@ -65,10 +74,10 @@ export default async function ProductPage({params}:{params:Promise<{slug:string}
       </div>
       <div className="formulation-summary"><span>Catalog code <strong>{item.codes[0]}</strong></span><span>Total nominal fill <strong>70 mg / vial</strong></span><span>Presentation <strong>10 vials / kit</strong></span></div>
     </div></section>}
-    {knowledge?.analyticalScope && <section className="analytical-scope section-pad"><div className="section-shell">
+    <section className="analytical-scope section-pad"><div className="section-shell">
       <div className="section-heading"><div><p className="eyebrow">PROCUREMENT REVIEW</p><h2>Recommended analytical scope.</h2><p>These are document-review criteria, not claims that every test has been completed for the currently available lot.</p></div></div>
-      <div className="analytical-grid">{knowledge.analyticalScope.map((check,index)=><article key={check.title}><span>0{index+1}</span><h3>{check.title}</h3><p>{check.body}</p></article>)}</div>
-    </div></section>}
+      <div className="analytical-grid">{analyticalScope.map((check,index)=><article key={check.title}><span>0{index+1}</span><h3>{check.title}</h3><p>{check.body}</p></article>)}</div>
+    </div></section>
     {knowledge && <section className="knowledge-section section-pad"><div className="section-shell knowledge-layout">
       <article className="knowledge-main">
         <p className="eyebrow">RESEARCH PROFILE</p><h2>{knowledge.composition ? `Scientific context for ${item.name} components.` : `What researchers study about ${item.name}.`}</h2>
