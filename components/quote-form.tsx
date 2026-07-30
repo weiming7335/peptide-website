@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
+import { trackGoogleQuoteFormConversion } from "@/lib/google-ads";
 import { trackRedditLead } from "@/lib/reddit-pixel";
 
 const formEndpoint = "https://formspree.io/f/mkodeagk";
@@ -44,6 +45,7 @@ export function QuoteForm() {
       });
 
       if (!response.ok) throw new Error("Submission failed");
+      trackGoogleQuoteFormConversion();
       trackRedditLead();
       form.reset();
       setState("success");
