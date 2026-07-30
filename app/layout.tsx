@@ -14,6 +14,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><head><Script
+      id="google-tag-loader"
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18358283872"
+      strategy="beforeInteractive"
+    /><Script
+      id="google-tag"
+      strategy="beforeInteractive"
+      dangerouslySetInnerHTML={{ __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag("js", new Date());
+        gtag("config", "AW-18358283872");
+      ` }}
+    /><Script
       id="reddit-pixel"
       strategy="beforeInteractive"
       dangerouslySetInnerHTML={{ __html: `
