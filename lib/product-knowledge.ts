@@ -10,6 +10,8 @@ export type ProductKnowledge = {
   researchContext: { title: string; body: string }[];
   references: { title: string; journal: string; url: string }[];
   faqs: { question: string; answer: string }[];
+  composition?: { component: string; nominal: string; identity: string }[];
+  analyticalScope?: { title: string; body: string }[];
   moleculeImage?: string;
 };
 
@@ -283,6 +285,115 @@ export const productKnowledge: Record<string, ProductKnowledge> = {
         question: "What is included in one kit?",
         answer:
           "One sealed kit contains 10 research vials. Confirm current specification, color/appearance expectations and batch documents before procurement.",
+      },
+    ],
+  },
+  glow: {
+    fullName: "BPC-157 · GHK-Cu · Thymosin β4 acetate research blend",
+    shortDescription:
+      "A defined three-component research blend containing nominal BPC-157 10 mg, GHK-Cu 50 mg and thymosin β4 acetate 10 mg per vial. The blend has no single molecular formula or sequence; each constituent requires separate identity and content consideration.",
+    researchStatus: "Multi-component laboratory research formulation · not an approved medicine",
+    molecularWeight: "Not applicable to the combined formulation",
+    sequence: "Three independently defined peptide components",
+    length: "Mixed: 15 aa · 3 aa copper complex · 43 aa",
+    origin: "Synthetic, fixed-ratio multi-peptide blend",
+    composition: [
+      {
+        component: "BPC-157",
+        nominal: "10 mg / vial",
+        identity: "15-amino-acid peptide · GEPPPGKPADDAGLV",
+      },
+      {
+        component: "GHK-Cu",
+        nominal: "50 mg / vial",
+        identity: "Copper(II) coordination complex of Gly–His–Lys",
+      },
+      {
+        component: "Thymosin β4 acetate",
+        nominal: "10 mg / vial",
+        identity: "43-amino-acid, N-terminally acetylated β-thymosin",
+      },
+    ],
+    analyticalScope: [
+      {
+        title: "Component identity",
+        body: "A blend report should distinguish all three constituents. A result for only one marker does not establish the identity of the complete formulation.",
+      },
+      {
+        title: "Measured content",
+        body: "Nominal fill is 70 mg per vial in total. Procurement review should look for component-specific measured content rather than treating total powder mass as peptide content.",
+      },
+      {
+        title: "Purity interpretation",
+        body: "For a multi-component sample, the test method and reported purity basis must be stated. A single percentage should not be assumed to describe every constituent.",
+      },
+      {
+        title: "Batch linkage",
+        body: "The report, quotation and vial presentation should identify the same sample or production batch. Endotoxin or other requested tests must be documented separately when applicable.",
+      },
+    ],
+    mechanism: [
+      "BPC-157 is a sequence-defined 15-amino-acid peptide studied mainly in cellular and animal models involving gastrointestinal, vascular and tissue-response pathways.",
+      "GHK-Cu is a copper–tripeptide coordination complex studied in fibroblast and extracellular-matrix models; its identity is chemically distinct from uncomplexed GHK.",
+      "Thymosin β4 is a 43-amino-acid actin-binding peptide studied in cytoskeletal regulation and preclinical tissue-response models.",
+      "The constituents have separate research literatures. Those studies do not establish that this fixed-ratio blend has a validated combined mechanism, clinical effect or human-use profile.",
+    ],
+    researchContext: [
+      {
+        title: "Formulation, not a new molecule",
+        body: "GLOW is a procurement name for three materials combined at a declared nominal ratio. It should not be assigned one sequence, molecular weight or purity value as though it were a single peptide.",
+      },
+      {
+        title: "Component evidence",
+        body: "Published studies provide biological context for BPC-157, GHK-Cu and thymosin β4 separately. They do not constitute evidence for the supplied blend or proof of the identity, content or quality of a particular batch.",
+      },
+      {
+        title: "Analytical limitation",
+        body: "Mixtures can require component-resolved methods and carefully defined reporting. Procurement decisions should rely on the actual test scope, measured results and batch identifiers—not a generic COA badge.",
+      },
+    ],
+    references: [
+      {
+        title: "BPC-157: compound record, sequence and computed properties",
+        journal: "PubChem · CID 9941957",
+        url: "https://pubchem.ncbi.nlm.nih.gov/compound/9941957",
+      },
+      {
+        title: "GHK-Cu stimulates matrix metalloproteinase-2 expression by fibroblast cultures",
+        journal: "Life Sciences · 2000",
+        url: "https://pubmed.ncbi.nlm.nih.gov/11045606/",
+      },
+      {
+        title: "Thymosin beta 4: compound record, sequence and computed properties",
+        journal: "PubChem · CID 45382195",
+        url: "https://pubchem.ncbi.nlm.nih.gov/compound/Thymosin-Beta-4",
+      },
+      {
+        title: "Thymosin beta4 promotes matrix metalloproteinase expression during wound repair",
+        journal: "Wound Repair and Regeneration · 2006",
+        url: "https://pubmed.ncbi.nlm.nih.gov/16607611/",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is the declared GLOW composition?",
+        answer:
+          "Each research vial is specified as BPC-157 10 mg, GHK-Cu 50 mg and thymosin β4 acetate 10 mg. One sealed kit contains 10 vials.",
+      },
+      {
+        question: "Does GLOW have one molecular weight or sequence?",
+        answer:
+          "No. It is a physical blend of three distinct peptide materials. Molecular identity and measured content should be considered separately for each constituent.",
+      },
+      {
+        question: "What documentation should a buyer request?",
+        answer:
+          "Request the report for the batch being quoted and confirm its test scope, component identities, measured content, purity basis, sample or batch identifier and any separately requested endotoxin result.",
+      },
+      {
+        question: "Does research on the individual components validate the blend?",
+        answer:
+          "No. Component literature supplies scientific background only. It does not prove a combined mechanism, clinical outcome, safety profile or batch quality for this formulation.",
       },
     ],
   },
