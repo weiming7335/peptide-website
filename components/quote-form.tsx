@@ -7,13 +7,15 @@ const formEndpoint = "https://formspree.io/f/mkodeagk";
 
 const countries = [
   "United States",
+  "Mexico",
+  "Brazil",
+  "Canada",
   "United Kingdom",
   "Germany",
   "France",
   "Netherlands",
   "Switzerland",
   "Australia",
-  "Canada",
   "Japan",
   "South Korea",
   "Singapore",
