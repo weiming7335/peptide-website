@@ -1,6 +1,15 @@
-import { PageHero } from "@/components/page-hero";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteHeader } from "@/components/site-header";
-import { companyName } from "@/lib/site-config";
-import { email } from "@/lib/content";
-export default function PrivacyPage(){return <><SiteHeader/><main><PageHero title="Privacy policy"/><article className="legal-page section-shell"><p>Last updated: July 30, 2026</p><p>This website is operated by {companyName} through the Jike Peptide Team.</p><h2>Information we receive</h2><p>When you submit our quotation form or contact us through WhatsApp or email, you may voluntarily provide contact, business, inquiry, order and delivery information.</p><h2>How it is used</h2><p>We use the information to answer inquiries, prepare quotations, provide documentation and coordinate orders and delivery.</p><h2>Advertising and analytics</h2><p>We use Google Ads measurement and the Reddit Pixel to measure website visits and inquiry-related actions, understand advertising performance and improve our website. Google and Reddit may process device, browser and interaction data under their own privacy terms and advertising controls.</p><h2>Third-party services</h2><p>Formspree, Google, Reddit, WhatsApp, email providers, carriers and analytical laboratories operate under their own privacy terms. We do not request payment credentials through this website.</p><h2>Customer feedback</h2><p>Published customer material is selected and anonymized where appropriate. Delivery experiences are individual and do not guarantee future carrier transit times.</p><h2>Contact</h2><p>Privacy questions may be sent to {email}.</p></article></main><SiteFooter/></>;}
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = { title: "Privacy Policy", description: "Privacy policy for Jike Peptide B2B procurement inquiries." };
+
+export default function PrivacyPage() {
+  return <main className="landing-legal"><Link href="/">← Back to Jike Peptide</Link><p className="eyebrow">PRIVACY</p><h1>Privacy policy</h1><p>Last updated: August 1, 2026</p>
+    <h2>Information we receive</h2><p>When you submit a procurement inquiry or contact us through WhatsApp or email, you may provide your name, company, business contact details, target market, sourcing requirements and other information you choose to include.</p>
+    <h2>How we use information</h2><p>Jike Biotech (Guangzhou) Co., Ltd. uses this information to review business inquiries, verify buyer and end-use information, prepare quotations, coordinate documentation and respond to your request.</p>
+    <h2>Service providers</h2><p>Inquiry data may be processed by Formspree, WhatsApp, email providers and other service providers needed to respond to you. Those providers process information under their own terms and privacy policies.</p>
+    <h2>Advertising and measurement</h2><p>We use Google Ads and Reddit measurement technologies to understand visits and inquiry-related actions. These providers may process device, browser and interaction information under their own privacy terms and advertising controls.</p>
+    <h2>Retention and choices</h2><p>We retain inquiry information only as reasonably necessary for business, compliance and recordkeeping purposes. You may request access, correction or deletion, subject to applicable legal requirements.</p>
+    <h2>Contact</h2><p>Privacy questions may be sent to <a href="mailto:christinepeptide@gmail.com">christinepeptide@gmail.com</a>.</p>
+  </main>;
+}
