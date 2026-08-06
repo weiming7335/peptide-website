@@ -1,74 +1,95 @@
-import { LandingQuoteForm } from "@/components/landing-quote-form";
+import Image from "next/image";
+import Link from "next/link";
+import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import { assetPath } from "@/lib/site-config";
-
-const whatsapp = "https://wa.me/12137038679?text=Hi%20Christine%2C%20I%20represent%20a%20commercial%20buyer%20and%20would%20like%20to%20discuss%20peptide%20manufacturing%2C%20wholesale%20or%20OEM%20supply.";
+import { certificates, christineWhatsapp, featuredProducts, testimonials, whatsappChannel } from "@/lib/content";
+import { ProductVisual } from "@/components/product-visual";
 
 export default function Home() {
-  return <div className="landing-page">
-    <main>
-      <section className="lp-hero">
-        <div className="lp-hero-copy">
-          <img className="lp-logo" src={assetPath("/images/jike-logo.png")} alt="Jike Peptide" />
-          <p className="lp-kicker">B2B PEPTIDE MANUFACTURING</p>
-          <h1>Reliable supply for growing product businesses.</h1>
-          <p className="lp-lead">Flexible wholesale orders, OEM packaging and batch-specific analytical documentation for qualified distributors, research suppliers and commercial buyers.</p>
-          <div className="lp-actions">
-            <a className="lp-button lp-button-primary" href="#inquiry">Request a quote <span>→</span></a>
-            <a className="lp-button lp-button-secondary" href={whatsapp} target="_blank" rel="noreferrer">WhatsApp procurement</a>
-          </div>
-          <p className="lp-boundary">Commercial supply only · Buyer and destination review required</p>
+  return <><SiteHeader /><main>
+    <section className="hero">
+      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")} aria-hidden="true" tabIndex={-1}>
+        <source src={assetPath("/video/hero-factory-loop.mp4")} type="video/mp4" />
+      </video>
+      <div className="section-shell hero-content">
+        <div className="hero-copy">
+          <p className="eyebrow">RESEARCH PEPTIDE SUPPLIER · B2B PROCUREMENT</p>
+          <h1>Research peptide supply. Direct from production.</h1>
+          <p>Multi-SKU sourcing, batch-specific analytical documentation and private-label coordination for laboratories, distributors and research suppliers.</p>
+          <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Request a procurement quote</a><Link className="secondary-button" href="/coa">Review documentation</Link></div>
+          <div className="hero-proof"><span><b>Multi-SKU</b>Consolidated quotations</span><span><b>1 kit</b>Evaluation available</span><span><b>1–2 weeks</b>Custom packaging</span></div>
         </div>
+      </div>
+      <div className="market-strip" aria-label="Global supply coverage"><div className="section-shell">
+        <div className="market-destinations">
+          <span>SHIPS TO</span>
+          <p><i>🇺🇸</i> United States</p>
+          <p><i>🇬🇧</i> United Kingdom</p>
+          <p><i>🇩🇪</i> Germany</p>
+          <p><i>🇨🇭</i> Switzerland</p>
+          <p><i>🇦🇺</i> Australia</p>
+          <p><i>🇯🇵</i> Japan</p>
+          <p><i>🇸🇬</i> Singapore</p>
+          <b>+ more</b>
+        </div>
+        <div className="market-services">
+          <p>Cold-chain shipping</p>
+          <p>COA · HPLC · MS</p>
+        </div>
+      </div>
+      </div>
+    </section>
 
-        <div className="lp-video-wrap">
-          <video autoPlay muted loop playsInline preload="metadata" poster={assetPath("/images/factory-landing-poster.jpg")} aria-label="Production staff operating packaging equipment in a controlled facility">
-            <source src={assetPath("/video/factory-landing.mp4")} type="video/mp4" />
-          </video>
-          <div className="lp-video-label"><i /> Actual production footage</div>
-        </div>
-      </section>
+    <section className="section-pad">
+      <div className="section-shell">
+        <div className="section-heading"><div><p className="eyebrow">POPULAR FIRST</p><h2>Most requested products</h2></div><Link href="/peptide">View full catalog →</Link></div>
+        <div className="product-grid">{featuredProducts.slice(0,8).map((item)=><article className="product-card" key={item.slug}>
+          <Link href={`/peptide/${item.slug}`}><ProductVisual item={item} /></Link>
+          <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p><Link className="product-procurement-link" href={`/peptide/${item.slug}`}>Specifications & procurement →</Link></div>
+        </article>)}</div>
+      </div>
+    </section>
 
-      <section className="lp-proof" aria-labelledby="proof-title">
-        <div className="lp-section-intro">
-          <p className="lp-kicker">DOCUMENTATION BEFORE ORDER</p>
-          <h2 id="proof-title">Know what is available for the quoted batch.</h2>
-          <p>Documentation scope is confirmed with the quotation and tied to the available lot.</p>
-        </div>
-        <div className="lp-proof-grid">
-          <article><span>01</span><h3>Batch COA</h3><p>Lot identity and specification details confirmed before order approval.</p></article>
-          <article><span>02</span><h3>Analytical records</h3><p>Available HPLC and mass spectrometry records reviewed for the quoted batch.</p></article>
-          <article><span>03</span><h3>Packaging confirmation</h3><p>Format, label artwork and production scope agreed in writing for OEM orders.</p></article>
-        </div>
-      </section>
+    <section className="section-pad b2b-audience"><div className="section-shell">
+      <div className="b2b-heading"><div><p className="eyebrow">WHO WE SERVE</p><h2>Built for research-sector procurement.</h2></div><p>Commercial supply coordination for qualified buyers, with low-volume evaluation available before larger programs.</p></div>
+      <div className="audience-grid">
+        <article><span>01</span><h3>Independent Research Laboratories</h3></article>
+        <article><span>02</span><h3>Peptide Distributors & Resellers</h3></article>
+        <article><span>03</span><h3>Private-Label Product Teams</h3></article>
+        <article><span>04</span><h3>Research Suppliers & Institutions</h3></article>
+      </div>
+    </div></section>
 
-      <section className="lp-capabilities" aria-labelledby="capabilities-title">
-        <div className="lp-section-intro">
-          <p className="lp-kicker">COMMERCIAL SUPPLY</p>
-          <h2 id="capabilities-title">A practical route from evaluation to repeat orders.</h2>
-        </div>
-        <div className="lp-capability-grid">
-          <article><div className="lp-icon">A</div><h3>Flexible wholesale</h3><p>Qualifying evaluation orders and recurring volume supply, subject to availability and buyer verification.</p></article>
-          <article><div className="lp-icon">B</div><h3>OEM &amp; private label</h3><p>Custom labels, boxes and presentation options prepared against an approved commercial brief.</p></article>
-          <article><div className="lp-icon">C</div><h3>International fulfillment</h3><p>Cross-border B2B dispatch coordinated according to destination requirements and approved order terms.</p></article>
-        </div>
-      </section>
+    <section className="quality section-pad"><div className="section-shell quality-grid">
+      <div><p className="eyebrow">QUALITY EVIDENCE</p><h2>Verify the report—not just the claim.</h2><p>Our COA center links directly to third-party report pages for available mass/purity and endotoxin tests. Request the current batch documentation before ordering.</p><Link className="primary-button" href="/coa">Explore COA center</Link></div>
+      <div className="report-stack">{certificates.slice(0,4).map((item)=><a href={item.reportUrl} target="_blank" rel="noreferrer" key={item.slug}><span>{item.testType}</span><strong>{item.name}</strong><b>Verify ↗</b></a>)}</div>
+    </div></section>
 
-      <section className="lp-inquiry" id="inquiry">
-        <div className="lp-inquiry-copy">
-          <p className="lp-kicker">PROCUREMENT INQUIRY</p>
-          <h2>Tell us what your business needs.</h2>
-          <p>Send your target specification, estimated quantity, market and packaging requirements. We will review buyer fit and reply with the available documentation and quotation scope.</p>
-          <a className="lp-direct" href={whatsapp} target="_blank" rel="noreferrer"><span>Prefer WhatsApp?</span><strong>Talk with Christine ↗</strong></a>
-        </div>
-        <LandingQuoteForm />
-      </section>
-    </main>
+    <section className="section-pad home-company"><div className="section-shell home-company-grid">
+      <div><p className="eyebrow">ABOUT JIKE PEPTIDE</p><p>Each standard kit contains 10 vials. Custom labels and packaging are typically prepared in 1–2 weeks.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Talk with Christine</a></div>
+      <figure><video controls playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")}><source src={assetPath("/video/factory.mp4")} type="video/mp4"/></video><figcaption>JikeBioTech company and factory overview</figcaption></figure>
+    </div></section>
 
-    <footer className="lp-footer">
-      <div className="lp-footer-brand"><img src={assetPath("/images/jike-logo.png")} alt="Jike Peptide logo" /><div><strong>JIKE PEPTIDE</strong><small>B2B Manufacturing</small></div></div>
-      <p>Commercial supply only. Orders are subject to buyer qualification, end-use review, applicable laws and destination requirements. No medical advice or therapeutic claims are provided.</p>
-      <div className="lp-footer-meta"><a href="mailto:christinepeptide@gmail.com">christinepeptide@gmail.com</a><a href="/privacy-policy">Privacy policy</a><span>© 2026 Jike Biotech (Guangzhou) Co., Ltd.</span></div>
-    </footer>
+    <section className="section-pad reviews"><div className="section-shell">
+      <div className="section-heading"><div><p className="eyebrow">CUSTOMER SHARES</p><h2>Real Customer Feedback</h2></div><a href={whatsappChannel} target="_blank" rel="noreferrer">More on WhatsApp Channel ↗</a></div>
+      <div className="review-grid">{testimonials.slice(0,6).map(item=><blockquote key={item.name}>
+        <figure><Image src={assetPath(item.image)} alt={`Order photo shared with ${item.name}'s delivery feedback`} fill sizes="(max-width: 700px) 100vw, 33vw" /></figure>
+        <div className="review-copy"><div>“</div><p>{item.quote}</p><footer><strong>{item.name}</strong><span>{item.note}</span></footer></div>
+      </blockquote>)}</div>
+      <p className="review-note">Photos show real order preparation and product presentation. Customer names and comments are displayed as shared. Individual carrier transit times may vary.</p>
+    </div></section>
 
-    <a className="lp-mobile-whatsapp" href={whatsapp} target="_blank" rel="noreferrer">WhatsApp</a>
-  </div>;
+    <section className="procurement section-pad"><div className="section-shell">
+      <div className="b2b-heading"><div><p className="eyebrow">WHOLESALE PEPTIDE PROCUREMENT</p><h2>A clear path from requirement to dispatch.</h2></div><p>Send one product or a multi-SKU list. Christine coordinates specifications, commercial terms, available documentation and fulfillment.</p></div>
+      <div className="procurement-grid">
+        <article><span>01</span><h3>Send requirements</h3><p>Product, specification, quantity, destination and packaging needs.</p></article>
+        <article><span>02</span><h3>Review quotation</h3><p>Confirm pricing, stock status, documentation scope and shipping option.</p></article>
+        <article><span>03</span><h3>Approve order</h3><p>Receive the pro forma details and confirm payment arrangements.</p></article>
+        <article><span>04</span><h3>Fulfillment</h3><p>Batch confirmation, packing, dispatch and tracking coordination.</p></article>
+      </div>
+    </div></section>
+
+    <section className="final-cta"><div className="section-shell"><div><span>READY TO REQUEST A QUOTE?</span><h2>Send Christine your product list.</h2></div><a className="light-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Start on WhatsApp →</a></div></section>
+  </main><SiteFooter /></>;
 }
