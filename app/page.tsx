@@ -28,10 +28,23 @@ export default function HomePage() {
       <div className="hero-proof shell"><span><strong>42</strong> catalog products</span><span><strong>1 kit</strong> minimum order</span><span><strong>34</strong> public test reports</span><span><strong>Global</strong> order support</span></div>
     </section>
 
-    <section className="section section-intro">
-      <div className="shell intro-grid">
-        <div><p className="eyebrow">ONE PARTNER. THE WHOLE WORKFLOW.</p><h2>From a single kit to a complete brand system.</h2></div>
-        <div><p>Start with the products and specifications you need. Add independent testing coordination, custom packaging, brand materials, website support and international fulfillment as your business grows.</p><Link className="text-link" href="/services">See all services ↗</Link></div>
+    <section className="section business-path-section">
+      <div className="shell">
+        <div className="business-path-heading"><div><p className="eyebrow">WHAT WE DO FOR YOU</p><h2>Products first. Your brand when you&apos;re ready.</h2></div><p>Buy finished products from one kit, then add packaging, design and website support when your business needs them.</p></div>
+        <div className="business-path-grid">
+          <Link href="/products" className="business-path-card">
+            <div className="business-path-image"><Image src="/products/Tesamorelin.png" alt="Jike Peptide ready-to-order product vial" width={1254} height={1254} /></div>
+            <div><span>01 · PRODUCT SUPPLY</span><h3>Order from one kit.</h3><p>Choose products and specifications from the full catalog.</p><strong>Browse products ↗</strong></div>
+          </Link>
+          <Link href="/services" className="business-path-card">
+            <div className="business-path-image business-path-image-top"><Image src="/services/paper-cartons.png" alt="Custom private-label peptide cartons and packaging options" width={724} height={2172} /></div>
+            <div><span>02 · PACKAGING</span><h3>Add your own label and box.</h3><p>Custom labels, cartons and storage cases for your brand.</p><strong>See packaging ↗</strong></div>
+          </Link>
+          <Link href="/services" className="business-path-card">
+            <div className="business-path-image"><Image src="/services/website-cases/genetra.jpg" alt="Example of a peptide e-commerce website available through Jike Peptide website support" width={1221} height={864} /></div>
+            <div><span>03 · BRAND LAUNCH</span><h3>Look ready to sell.</h3><p>Brand design, print assets and a mobile-ready website.</p><strong>Explore services ↗</strong></div>
+          </Link>
+        </div>
       </div>
     </section>
 
