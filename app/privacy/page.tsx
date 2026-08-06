@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import { PageHero } from "@/components/page-hero";
+import { companyName, email } from "@/lib/site";
+
+export const metadata: Metadata = { title: "Privacy" };
+export default function PrivacyPage() { return <><PageHero eyebrow="LEGAL" title="Privacy policy." copy="How information submitted through this website is handled." /><article className="legal-page shell"><p>Last updated: August 6, 2026</p><h2>Who operates this website</h2><p>This website is operated by {companyName} through the Jike Peptide team.</p><h2>Information we receive</h2><p>When you submit a quotation form or contact us by email or WhatsApp, you may provide your name, contact details, country, customer type, company, product interests, quantities and project requirements.</p><h2>How information is used</h2><p>We use submitted information to respond to inquiries, prepare quotations, coordinate documentation and support orders or service projects.</p><h2>Service providers</h2><p>Form submissions are processed by Formspree. WhatsApp, email providers, analytical laboratories and logistics providers operate under their own privacy terms. We do not request payment-card credentials through this website.</p><h2>Contact</h2><p>Privacy questions may be sent to <a href={`mailto:${email}`}>{email}</a>.</p></article></>; }

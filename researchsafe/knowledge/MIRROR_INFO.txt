@@ -1,7 +1,0 @@
-ResearchSafe authorized static mirror
-Source: https://researchsafe.org/knowledge
-Generated: 2026-07-23T08:19:48.935Z
-Detail pages: 278
-
-Serve this directory as the web root so /static and /peptides URLs resolve:
-python3 -m http.server 4173 --directory researchsafe/knowledge

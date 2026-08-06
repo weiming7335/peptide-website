@@ -1,95 +1,69 @@
 import Image from "next/image";
 import Link from "next/link";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { assetPath } from "@/lib/site-config";
-import { certificates, christineWhatsapp, featuredProducts, testimonials, whatsappChannel } from "@/lib/content";
-import { ProductVisual } from "@/components/product-visual";
+import { ProductCard } from "@/components/product-card";
+import { featuredProducts } from "@/lib/products";
 
-export default function Home() {
-  return <><SiteHeader /><main>
-    <section className="hero">
-      <video className="hero-video" autoPlay muted loop playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")} aria-hidden="true" tabIndex={-1}>
-        <source src={assetPath("/video/hero-factory-loop.mp4")} type="video/mp4" />
+const services = [
+  ["01", "Product supply", "One-kit ordering for individuals, resellers, wholesalers and repeat procurement."],
+  ["02", "Independent testing", "Shared-cost Janoshik testing coordination with original verification reports."],
+  ["03", "OEM & private label", "Labels, cartons, storage cases and selected OEM programs for growing brands."],
+  ["04", "Brand materials", "Logo systems, print-ready packaging, inserts, cards and digital product assets."],
+  ["05", "Website support", "Mobile-ready e-commerce builds with structured product and report libraries."],
+  ["06", "Global fulfillment", "International order coordination subject to destination and carrier requirements."],
+];
+
+export default function HomePage() {
+  return <>
+    <section className="home-hero">
+      <video autoPlay muted loop playsInline preload="metadata" poster="/brand/factory-frame.jpg">
+        <source src="/video/factory.mp4" type="video/mp4" />
       </video>
-      <div className="section-shell hero-content">
-        <div className="hero-copy">
-          <p className="eyebrow">RESEARCH PEPTIDE SUPPLIER · B2B PROCUREMENT</p>
-          <h1>Research peptide supply. Direct from production.</h1>
-          <p>Multi-SKU sourcing, batch-specific analytical documentation and private-label coordination for laboratories, distributors and research suppliers.</p>
-          <div className="button-row"><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Request a procurement quote</a><Link className="secondary-button" href="/coa">Review documentation</Link></div>
-          <div className="hero-proof"><span><b>Multi-SKU</b>Consolidated quotations</span><span><b>1 kit</b>Evaluation available</span><span><b>1–2 weeks</b>Custom packaging</span></div>
-        </div>
+      <div className="hero-overlay"></div>
+      <div className="shell hero-content">
+        <p className="eyebrow eyebrow-light">PRODUCTS · TESTING · PACKAGING · BRANDING · SHIPPING</p>
+        <h1>You focus on sales.<br /><span>We support the rest.</span></h1>
+        <p>Jike Peptide connects product supply, independent testing coordination and brand-ready services in one clear workflow.</p>
+        <div className="button-row"><Link className="button" href="/products">Explore Products</Link><Link className="button button-ghost" href="/request-a-quote">Request a Quote</Link></div>
       </div>
-      <div className="market-strip" aria-label="Global supply coverage"><div className="section-shell">
-        <div className="market-destinations">
-          <span>SHIPS TO</span>
-          <p><i>🇺🇸</i> United States</p>
-          <p><i>🇬🇧</i> United Kingdom</p>
-          <p><i>🇩🇪</i> Germany</p>
-          <p><i>🇨🇭</i> Switzerland</p>
-          <p><i>🇦🇺</i> Australia</p>
-          <p><i>🇯🇵</i> Japan</p>
-          <p><i>🇸🇬</i> Singapore</p>
-          <b>+ more</b>
-        </div>
-        <div className="market-services">
-          <p>Cold-chain shipping</p>
-          <p>COA · HPLC · MS</p>
-        </div>
-      </div>
+      <div className="hero-proof shell"><span><strong>42</strong> catalog products</span><span><strong>1 kit</strong> minimum order</span><span><strong>34</strong> public test reports</span><span><strong>Global</strong> order support</span></div>
+    </section>
+
+    <section className="section section-intro">
+      <div className="shell intro-grid">
+        <div><p className="eyebrow">ONE PARTNER. THE WHOLE WORKFLOW.</p><h2>From a single kit to a complete brand system.</h2></div>
+        <div><p>Start with the products and specifications you need. Add independent testing coordination, custom packaging, brand materials, website support and international fulfillment as your business grows.</p><Link className="text-link" href="/services">See all services ↗</Link></div>
       </div>
     </section>
 
-    <section className="section-pad">
-      <div className="section-shell">
-        <div className="section-heading"><div><p className="eyebrow">POPULAR FIRST</p><h2>Most requested products</h2></div><Link href="/peptide">View full catalog →</Link></div>
-        <div className="product-grid">{featuredProducts.slice(0,8).map((item)=><article className="product-card" key={item.slug}>
-          <Link href={`/peptide/${item.slug}`}><ProductVisual item={item} /></Link>
-          <div><span>{item.category}</span><h3><Link href={`/peptide/${item.slug}`}>{item.name}</Link></h3><p>{item.specs.join(" · ")}</p><Link className="product-procurement-link" href={`/peptide/${item.slug}`}>Specifications & procurement →</Link></div>
-        </article>)}</div>
+    <section className="section section-products">
+      <div className="shell">
+        <div className="section-heading"><div><p className="eyebrow">CATALOG</p><h2>Selected products.</h2></div><Link className="button button-outline" href="/products">View all 42</Link></div>
+        <div className="product-grid featured-grid">{featuredProducts.slice(0, 6).map((product) => <ProductCard product={product} key={product.slug} />)}</div>
       </div>
     </section>
 
-    <section className="section-pad b2b-audience"><div className="section-shell">
-      <div className="b2b-heading"><div><p className="eyebrow">WHO WE SERVE</p><h2>Built for research-sector procurement.</h2></div><p>Commercial supply coordination for qualified buyers, with low-volume evaluation available before larger programs.</p></div>
-      <div className="audience-grid">
-        <article><span>01</span><h3>Independent Research Laboratories</h3></article>
-        <article><span>02</span><h3>Peptide Distributors & Resellers</h3></article>
-        <article><span>03</span><h3>Private-Label Product Teams</h3></article>
-        <article><span>04</span><h3>Research Suppliers & Institutions</h3></article>
+    <section className="section testing-feature">
+      <div className="shell testing-feature-grid">
+        <div className="testing-copy"><p className="eyebrow eyebrow-light">INDEPENDENT THIRD-PARTY TESTING</p><h2>Original reports. Direct verification.</h2><p>Our public library presents Janoshik reports exactly as issued, including sample identifiers, report numbers and original verification links.</p><div className="testing-points"><span>Content & purity</span><span>Endotoxin</span><span>Batch identifiers</span></div><Link className="button" href="/third-party-testing">Browse all reports</Link></div>
+        <div className="report-stack"><Image src="/testing/report-198338.png" alt="Janoshik content and purity report" width={480} height={708} /><Image src="/testing/report-198339.png" alt="Janoshik endotoxin report" width={480} height={708} /></div>
       </div>
-    </div></section>
+    </section>
 
-    <section className="quality section-pad"><div className="section-shell quality-grid">
-      <div><p className="eyebrow">QUALITY EVIDENCE</p><h2>Verify the report—not just the claim.</h2><p>Our COA center links directly to third-party report pages for available mass/purity and endotoxin tests. Request the current batch documentation before ordering.</p><Link className="primary-button" href="/coa">Explore COA center</Link></div>
-      <div className="report-stack">{certificates.slice(0,4).map((item)=><a href={item.reportUrl} target="_blank" rel="noreferrer" key={item.slug}><span>{item.testType}</span><strong>{item.name}</strong><b>Verify ↗</b></a>)}</div>
-    </div></section>
-
-    <section className="section-pad home-company"><div className="section-shell home-company-grid">
-      <div><p className="eyebrow">ABOUT JIKE PEPTIDE</p><p>Each standard kit contains 10 vials. Custom labels and packaging are typically prepared in 1–2 weeks.</p><a className="primary-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Talk with Christine</a></div>
-      <figure><video controls playsInline preload="metadata" poster={assetPath("/images/real/factory-poster.jpg")}><source src={assetPath("/video/factory.mp4")} type="video/mp4"/></video><figcaption>JikeBioTech company and factory overview</figcaption></figure>
-    </div></section>
-
-    <section className="section-pad reviews"><div className="section-shell">
-      <div className="section-heading"><div><p className="eyebrow">CUSTOMER SHARES</p><h2>Real Customer Feedback</h2></div><a href={whatsappChannel} target="_blank" rel="noreferrer">More on WhatsApp Channel ↗</a></div>
-      <div className="review-grid">{testimonials.slice(0,6).map(item=><blockquote key={item.name}>
-        <figure><Image src={assetPath(item.image)} alt={`Order photo shared with ${item.name}'s delivery feedback`} fill sizes="(max-width: 700px) 100vw, 33vw" /></figure>
-        <div className="review-copy"><div>“</div><p>{item.quote}</p><footer><strong>{item.name}</strong><span>{item.note}</span></footer></div>
-      </blockquote>)}</div>
-      <p className="review-note">Photos show real order preparation and product presentation. Customer names and comments are displayed as shared. Individual carrier transit times may vary.</p>
-    </div></section>
-
-    <section className="procurement section-pad"><div className="section-shell">
-      <div className="b2b-heading"><div><p className="eyebrow">WHOLESALE PEPTIDE PROCUREMENT</p><h2>A clear path from requirement to dispatch.</h2></div><p>Send one product or a multi-SKU list. Christine coordinates specifications, commercial terms, available documentation and fulfillment.</p></div>
-      <div className="procurement-grid">
-        <article><span>01</span><h3>Send requirements</h3><p>Product, specification, quantity, destination and packaging needs.</p></article>
-        <article><span>02</span><h3>Review quotation</h3><p>Confirm pricing, stock status, documentation scope and shipping option.</p></article>
-        <article><span>03</span><h3>Approve order</h3><p>Receive the pro forma details and confirm payment arrangements.</p></article>
-        <article><span>04</span><h3>Fulfillment</h3><p>Batch confirmation, packing, dispatch and tracking coordination.</p></article>
+    <section className="section services-section">
+      <div className="shell"><div className="section-heading"><div><p className="eyebrow">WHAT WE SUPPORT</p><h2>Built around the way you sell.</h2></div><p className="section-heading-copy">Choose only what you need now, then add services as your catalogue and brand expand.</p></div>
+        <div className="service-grid">{services.map(([number, title, copy]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{copy}</p></article>)}</div>
       </div>
-    </div></section>
+    </section>
 
-    <section className="final-cta"><div className="section-shell"><div><span>READY TO REQUEST A QUOTE?</span><h2>Send Christine your product list.</h2></div><a className="light-button" href={christineWhatsapp} target="_blank" rel="noreferrer">Start on WhatsApp →</a></div></section>
-  </main><SiteFooter /></>;
+    <section className="section factory-section">
+      <div className="shell">
+        <div className="factory-heading"><div><p className="eyebrow">MANUFACTURING CAPABILITIES</p><h2>Real production, shown as it is.</h2></div><p>A single view of our lyophilization, R&amp;D, production, labeling, packaging and in-stock supply capabilities.</p></div>
+        <figure className="factory-capabilities">
+          <Image src="/factory/manufacturing-capabilities.webp" alt="Jike Peptide manufacturing capabilities including lyophilization, R&D laboratory, production workshops, labeling, packaging and inventory" width={1448} height={1086} sizes="(max-width: 1228px) calc(100vw - 48px), 1180px" />
+        </figure>
+      </div>
+    </section>
+
+    <section className="final-cta"><div className="shell"><p className="eyebrow eyebrow-light">READY WHEN YOU ARE</p><h2>Tell us what you want to source, test or build.</h2><p>Send the product, specification, quantity and service requirements. We will reply with the next practical step.</p><Link className="button" href="/request-a-quote">Request a Quote</Link></div></section>
+  </>;
 }

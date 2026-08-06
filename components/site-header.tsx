@@ -1,34 +1,24 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { assetPath } from "@/lib/site-config";
+import { navigation } from "@/lib/site";
 
 export function SiteHeader() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-  const navProps = (href: string) => {
-    const active = pathname === href || pathname.startsWith(`${href}/`);
-    return { className: active ? "active" : undefined, "aria-current": active ? "page" as const : undefined };
-  };
-
-  return <>
-    <header className={`site-header${isHome ? " home-header" : ""}`}>
-      <div className="section-shell nav-shell">
-        <Link className="brand" href="/" aria-label="Jike Peptide home">
-          <Image src={assetPath("/images/jike/logo-blue-jp-transparent.png")} alt="JP" width={92} height={55} priority />
-          <span><strong>Jike Peptide</strong><small>INTERNATIONAL RESEARCH SUPPLY</small></span>
-        </Link>
+  return <header className="site-header">
+    <div className="shell header-inner">
+      <Link className="brand" href="/" aria-label="Jike Peptide home">
+        <Image src="/brand/jike-logo.png" alt="Jike Peptide" width={214} height={75} priority />
+      </Link>
+      <nav className="desktop-nav" aria-label="Main navigation">
+        {navigation.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+      </nav>
+      <Link className="button button-small header-quote" href="/request-a-quote">Request a Quote</Link>
+      <details className="mobile-menu">
+        <summary aria-label="Open navigation"><span></span><span></span><span></span></summary>
         <nav>
-          <Link href="/peptide" {...navProps("/peptide")}>Products</Link>
-          <Link href="/coa" {...navProps("/coa")}>COA Verification</Link>
-          <Link href="/faq" {...navProps("/faq")}>FAQ</Link>
-          <Link href="/contact" {...navProps("/contact")}>Contact</Link>
+          {navigation.map((item) => <Link href={item.href} key={item.href}>{item.label}</Link>)}
+          <Link className="button" href="/request-a-quote">Request a Quote</Link>
         </nav>
-        <details className="mobile-menu"><summary>Menu</summary><div><Link href="/peptide" {...navProps("/peptide")}>Products</Link><Link href="/coa" {...navProps("/coa")}>COA</Link><Link href="/faq" {...navProps("/faq")}>FAQ</Link><Link href="/contact" {...navProps("/contact")}>Contact</Link></div></details>
-        <Link className="header-cta" href="/contact">Request a quote</Link>
-      </div>
-    </header>
-  </>;
+      </details>
+    </div>
+  </header>;
 }
